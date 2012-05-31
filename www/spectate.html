@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Spectate</title>
+    <link rel="stylesheet" type="text/css" href="/css/montserrat/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/css/screen.css">
+</head>
+<body>
+
+<div id="players">&nbsp;</div>
+
+<div id="intro">
+    <h2>Connectez-vous</h2>
+    <h1><span id="join-url"></span></h1>
+    <span id="start">DÉMARRER</span>
+</div>
+
+<div id="game">
+    <div id="player">
+        <canvas id="visualization"></canvas>
+        <span id="timer"></span>
+    </div>
+
+    <ul id="suggestions">
+    </ul>
+
+    <div id="layer">
+        <div id="hint">
+        </div>
+
+        <div id="answer">
+            <div id="player-right"><span></span> a trouvé :</div>
+            <div id="artist"></div>
+            <div id="title"></div>
+        </div>
+
+        <div id="winner">
+            <span id="winner-name"></span> a gagné !
+        </div>
+    </div>
+
+    <span id="next">➜</span>
+</div>
+<pre id="console"></pre>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+<script src="/js/soundmanagerv2/script/soundmanager2-nodebug.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+soundManager.url = '/js/soundmanagerv2/swf/';
+soundManager.usePeakData = true;
+soundManager.flashVersion = 9;
+soundManager.flash9Options = {usePeakData: true};
+</script>
+<script src="/js/monitor.js"></script>
+</body>
+</html>

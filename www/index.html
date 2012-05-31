@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Player</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 1.5em;
+    }
+    form,
+    #username {
+        background: #0CF;
+        color: #FFF;
+        text-align: center;
+        margin: 0;
+        padding: 12px;
+        font-size: 1.25em;
+    }
+        form input {
+            font-size: 1.25em;
+            padding: 4px;
+        }
+    #suggestions {
+        padding: 0 12px;
+        text-align: center;
+    }
+    #suggestions li {
+        margin: 12px 0;
+        display: block;
+        background: #000;
+        color: #FFF;
+        padding: 12px;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+    .right {
+        font-size: 72px;
+        color: #66cc00;
+    }
+    .wrong {
+        font-size: 72px;
+        color: #cc3300;
+    }
+    </style>
+</head>
+<body>
+
+<div id="login">
+    <form action="" method="get">
+        <div>
+            <input type="text" value="" placeholder="username" name="nickname" id="nickname">
+            <input type="submit" value="Connect">
+        </div>
+    </form>
+</div>
+
+<div id="game">
+    <div id="username"></div>
+    <ul id="suggestions">
+    </ul>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/player/zepto.min.js"></script>
+<script src="/js/player/player.js?v=1"></script>
+</body>
+</html>
