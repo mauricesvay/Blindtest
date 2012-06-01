@@ -4,6 +4,7 @@ var App = {
     audio: null,
     timestamp: 0,
     pause: 5*1000,
+    roundPause: 10*1000,
 
     init: function() {
 
@@ -133,7 +134,7 @@ var App = {
                 App.audio.onPosition(timestamp, App.timerNearEnd);
             },
             whileloading: function() {
-                
+
             },
             whileplaying: function() {
                 App.timestamp = Math.floor((App.audio.durationEstimate - App.audio.position) / 1000);
@@ -152,6 +153,9 @@ var App = {
         App.winner = winner;
         $('#winner-name').text(winner);
         $('#winner').show();
+        setTimeout(function(){
+            socket.emit('start');
+        }, App.roundPause);
     },
     hideWinner: function() {
         App.winner = '';
@@ -161,7 +165,7 @@ var App = {
 };
 
 App.visualization = {
-    
+
     ctx: null,
     width: 300,
     height: 300,
@@ -192,10 +196,10 @@ App.visualization = {
         ctx.beginPath();
         ctx.arc(
             Math.floor(App.visualization.width / 2),
-            Math.floor(App.visualization.height / 2), 
-            (App.visualization.minRadius + value * App.visualization.factor ), 
-            0, 
-            Math.PI*2, 
+            Math.floor(App.visualization.height / 2),
+            (App.visualization.minRadius + value * App.visualization.factor ),
+            0,
+            Math.PI*2,
             false
         );
         ctx.closePath();
@@ -205,11 +209,11 @@ App.visualization = {
 
 var socket;
 $(function(){
-    
+
     App.init();
 
     socket = io.connect('http://' + location.hostname);
-    
+
     socket.emit('spectate',{});
 
     $('#start').on('click', function(){
@@ -221,7 +225,11 @@ $(function(){
         var out = '';
         // var out = '<li>' + ((users.length == 1) ? '1 joueur' : users.length + ' joueurs') + '</li>';
         for (var i=0,l=users.length; i<l; i++) {
-            out += '<li>' + users[i].username + ' (' + users[i].score + ')' + '</li>';
+            if (users[i].hasJoined) {
+                out += '<li>' + users[i].username + ' (' + users[i].score + ')' + '</li>';
+            } else {
+                out += '<li>' + users[i].username + ' (ready)' + '</li>';
+            }
         }
         $('#players').html(out);
     });

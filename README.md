@@ -26,13 +26,14 @@ Starting the game
 
 TODO
 ----
-* Start a new round when a round is finished (so you don't have to restart the app)
-* Let users join anytime
+* ~~Start a new round when a round is finished (so you don't have to restart the app)~~
+* ~~Let users join anytime~~
 * Let users create "rooms"
 * Let users login with a FB or Twitter account
 * Let users select a playlist to choose songs from
 * Implement lag compensation
 * Play audio on clients
+* Make it easier to change options
 
 
 Technical details
