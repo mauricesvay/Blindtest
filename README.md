@@ -24,6 +24,17 @@ Starting the game
 * each player can now join the game at `http://MAIN_SCREEN_IP_ADDRESS:8080/`
 * when all players are ready, you can start the game on the main screen. 
 
+TODO
+----
+* Start a new round when a round is finished (so you don't have to restart the app)
+* Let users join anytime
+* Let users create "rooms"
+* Let users login with a FB or Twitter account
+* Let users select a playlist to choose songs from
+* Implement lag compensation
+* Play audio on clients
+
+
 Technical details
 -----------------
 * Audio samples and tracks info come from Deezer API
