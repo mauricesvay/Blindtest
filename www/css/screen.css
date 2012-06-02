@@ -23,24 +23,23 @@ body {
 /* Intro
 ******************************************************/
 #intro {
-    background: #0CF;
+    background: #000;
     color: #FFF;
     position: absolute;
     padding: 24px;
-    width: 800px;
     text-align: center;
-    font-size: 36px;
+    font-size: 28px;
 
     z-index: 1;
-    left: 50%;
-    margin-left: -400px;
+    left: 0;
+    right: 0;
 }
     #start {
         display: inline-block;
         padding: 6px;
-        background: #0099cc;
+        background: #F0C;
         cursor: pointer;
-        border: 6px solid #09C;
+        border: 6px solid #F0C;
     }
     #start:hover {
         border: 6px solid #FFF;

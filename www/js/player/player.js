@@ -3,7 +3,6 @@ var App = {
 
     currentSong : null,
     username : null,
-    loggedIn : null,
 
     init : function() {
 
@@ -21,22 +20,22 @@ var App = {
         });
 
         socket.on('login', function(){
-            App.loggedIn = App.username;
             $('form').hide();
+            $('#suggestions').html('<span class="wait">Ready for next round</span>');
         });
 
-        //Logged in
+        socket.on('refused', function(){
+            alert('Server is full');
+            socket.disconnect();
+        });
+
         socket.on('song', function(song){
-            if (!App.loggedIn) {
-                return;
-            }
-            App.onSong(song);
+            // if (App.userName) {
+                App.onSong(song);
+            // }
         });
 
         socket.on('right', function(data){
-            if (!App.loggedIn) {
-                return;
-            }
             if (data) {
                 App.onWrong();
             } else {
@@ -45,18 +44,12 @@ var App = {
         });
 
         socket.on('wrong', function(){
-            if (!App.loggedIn) {
-                return;
-            }
             App.onWrong();
         });
 
-        socket.on('refused', function(){
-            alert("Connexion refusée");
-        });
-
         //Suggestions
-        $('#suggestions').on('click', function(e){
+        var eventType = (typeof window.ontouchstart === 'undefined') ? 'click' : 'tap' ;
+        $('#suggestions').on(eventType, function(e){
             if ($(e.target).attr('data-value')) {
                 var value = $(e.target).attr('data-value');
                 socket.emit('button',{
@@ -75,8 +68,9 @@ var App = {
         $('#suggestions').html("<span class='right'>✔</span>");
     },
 
+    //@TODO : add case when other user is right onOtherRight
+
     onWrong : function() {
-        //@TODO: prevent from sending again
         $('#suggestions').html("<span class='wrong'>✖</span>");
     },
 
@@ -85,7 +79,7 @@ var App = {
         for (var i=0,l=App.currentSong.suggestions.length; i<l; i++) {
             out += '<li data-value="' + i + '">' + App.currentSong.suggestions[i].name + '</li>';
         }
-        $('#suggestions').html(out);
+        $('#suggestions').html('<ul>' + out + '</ul>');
     }
 }
 $(function(){
