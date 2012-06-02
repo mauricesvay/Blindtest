@@ -7,7 +7,7 @@ This project was initially made for the BeMyApp Deezer contest (48h hackathon).
 
 Demo
 ----
-[http://code.inertie.org/spectate](Try the demo) (main screen)
+[Try the demo](http://code.inertie.org/spectate) (main screen)
 
 Gameplay
 --------
