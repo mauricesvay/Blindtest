@@ -6,5 +6,6 @@
       "express": ""
     , "socket.io": ""
     , "sqlite3": ""
+    , "sanitizer": ""
   }
 }
