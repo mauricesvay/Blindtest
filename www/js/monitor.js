@@ -13,10 +13,9 @@ var App = {
 
         App.visualization.init();
 
-        $('#next').on('click', function(){
-            socket.emit('next');
-            //App.next();
-        });
+        // $('#next').on('click', function(){
+        //     socket.emit('next');
+        // });
         $('#timer').on('click', function(){
             // App.audio.play('preview');
         });
