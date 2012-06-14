@@ -119,8 +119,8 @@ var App = {
     },
     playPreview: function() {
 
-        $('#artist').text(App.currentSong.artist.name);
-        $('#title').text(App.currentSong.title);
+        $('.artist').text(App.currentSong.artist.name);
+        $('.title').text(App.currentSong.title);
         soundManager.destroySound('preview');
         App.audio = soundManager.createSound({
             id: 'preview',
