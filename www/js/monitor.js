@@ -5,20 +5,25 @@ var App = {
     timestamp: 0,
     pause: 5*1000,
     roundPause: 10*1000,
+    timerPlaceholder: '♫',
 
     init: function() {
 
         var url = window.location + '';
-        $('#join-url').html(url.replace('/spectate',''))
+        $('#join-url').html(url.replace('/spectate',''));
 
         App.visualization.init();
 
         // $('#next').on('click', function(){
         //     socket.emit('next');
         // });
-        $('#timer').on('click', function(){
-            // App.audio.play('preview');
-        });
+        if (!soundManager.usePeakData) {
+            App.timerPlaceholder = '▶';
+            $('#timer')
+                .on('click', function(){
+                    App.audio.play('preview');
+                });
+        }
     },
 
     goToGame : function(song) {
@@ -43,7 +48,6 @@ var App = {
     },
 
     play: function() {
-        console.log("play");
         App.showSuggestions();
         App.playPreview();
     },
@@ -108,7 +112,7 @@ var App = {
     },
     initTimer: function() {
         $('#timer').removeClass('warning');
-        $('#timer').text('♫');
+        $('#timer').text(App.timerPlaceholder);
     },
     timerNearEnd: function() {
         $('#timer').addClass('warning');
@@ -117,7 +121,6 @@ var App = {
 
         $('#artist').text(App.currentSong.artist.name);
         $('#title').text(App.currentSong.title);
-
         soundManager.destroySound('preview');
         App.audio = soundManager.createSound({
             id: 'preview',
@@ -136,9 +139,12 @@ var App = {
 
             },
             whileplaying: function() {
+                var mean = 0;
                 App.timestamp = Math.floor((App.audio.durationEstimate - App.audio.position) / 1000);
                 $('#timer').text(App.timestamp);
-                var mean = (App.audio.peakData.left + App.audio.peakData.right / 2);
+                if (soundManager.usePeakData) {
+                    mean = (App.audio.peakData.left + App.audio.peakData.right / 2);
+                }
                 App.visualization.update(mean);
             },
             onfinish: function() {
@@ -220,7 +226,7 @@ $(function(){
     });
 
     socket.on('users', function(data){
-        var users = data.users
+        var users = data.users;
         var out = '';
         // var out = '<li>' + ((users.length == 1) ? '1 joueur' : users.length + ' joueurs') + '</li>';
         for (var i=0,l=users.length; i<l; i++) {

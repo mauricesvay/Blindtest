@@ -48,10 +48,28 @@
 <script src="/js/soundmanagerv2/script/soundmanager2-nodebug.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
+function detectFlash() {
+    //http://stackoverflow.com/questions/998245/how-can-i-detect-if-flash-is-installed-and-if-not-display-a-hidden-div-that-inf
+    var hasFlash = false;
+    try {
+        var fo = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+        if(fo) {
+            hasFlash = true;
+        }
+    } catch (e) {
+        if(navigator.mimeTypes ["application/x-shockwave-flash"] != undefined) {
+            hasFlash = true;
+        }
+    }
+    return hasFlash;
+}
+
 soundManager.url = '/js/soundmanagerv2/swf/';
-soundManager.usePeakData = true;
-soundManager.flashVersion = 9;
-soundManager.flash9Options = {usePeakData: true};
+if (detectFlash()) {
+    soundManager.usePeakData = true;
+    soundManager.flashVersion = 9;
+    soundManager.flash9Options = {usePeakData: true};
+}
 </script>
 <script src="/js/monitor.js"></script>
 </body>
