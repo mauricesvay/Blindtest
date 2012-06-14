@@ -95,6 +95,10 @@ body {
     text-align: center;
 
     -moz-transform: skew(0deg, -7deg);
+    -webkit-transform: skew(0deg, -7deg);
+    -o-transform: skew(0deg, -7deg);
+    -ms-transform: skew(0deg, -7deg);
+    transform: skew(0deg, -7deg)
 }
 
 /* Hint, answer
