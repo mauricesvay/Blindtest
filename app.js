@@ -9,6 +9,9 @@ app.listen(PORT);
 app.configure('development', function(){
     app.use(express.static(__dirname + '/www'));
 });
+app.configure('production', function(){
+    app.use(express.static(__dirname + '/www'));
+});
 app.get('/', function (req, res) {
     res.sendfile(__dirname + '/www/index.html');
 });
