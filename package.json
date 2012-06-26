@@ -3,7 +3,7 @@
   , "version": "0.0.2"
   , "private": true
   , "dependencies": {
-      "express": ">= 2.5.10"
+      "express": "2.5.10"
     , "socket.io": ">= 0.9.6"
     , "sqlite3": ">= 2.0.18"
     , "sanitizer": ">= 0.0.15"
