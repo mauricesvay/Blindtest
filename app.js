@@ -21,4 +21,8 @@ app.get('/spectate', function (req, res) {
 io.configure('development', function(){
     io.set('log level', 1);
 });
+io.configure(function () {
+  io.set("transports", ["xhr-polling"]);
+  io.set("polling duration", 10);
+});
 Game.init(io);
