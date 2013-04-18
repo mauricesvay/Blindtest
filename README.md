@@ -5,10 +5,6 @@ Blindtest is a multiplayer musical game (up to 16 simultaneous players). This is
 
 This project was initially made for the BeMyApp Deezer contest (48h hackathon).
 
-Demo
-----
-[Try the demo](http://code.inertie.org/spectate) (main screen)
-
 Gameplay
 --------
 * The main screen plays a 30sec audio sample of a random song
