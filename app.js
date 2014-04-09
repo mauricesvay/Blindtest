@@ -13,10 +13,10 @@ app.configure('production', function(){
     app.use(express.static(__dirname + '/www'));
 });
 app.get('/', function (req, res) {
-    res.sendfile(__dirname + '/www/index.html');
+    res.sendfile( '/www/index.html' , {root:__dirname});
 });
 app.get('/spectate', function (req, res) {
-    res.sendfile(__dirname + '/www/spectate.html');
+    res.sendfile( '/www/spectate.html' , {root:__dirname});
 });
 io.configure('development', function(){
     io.set('log level', 1);
