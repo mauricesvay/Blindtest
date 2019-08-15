@@ -1,16 +1,14 @@
 var App = {
-
-    currentSong : null,
+    currentSong: null,
     audio: null,
     timestamp: 0,
-    pause: 5*1000,
-    roundPause: 10*1000,
-    timerPlaceholder: '♫',
+    pause: 5 * 1000,
+    roundPause: 10 * 1000,
+    timerPlaceholder: "♫",
 
     init: function() {
-
-        var url = window.location + '';
-        $('#join-url').html(url.replace('/spectate',''));
+        var url = window.location + "";
+        $("#join-url").html(url.replace("/spectate", ""));
 
         App.visualization.init();
 
@@ -18,28 +16,27 @@ var App = {
         //     socket.emit('next');
         // });
         if (!soundManager.usePeakData) {
-            App.timerPlaceholder = '▶';
-            $('#timer')
-                .on('click', function(){
-                    App.audio.play('preview');
-                });
+            App.timerPlaceholder = "▶";
+            $("#timer").on("click", function() {
+                App.audio.play("preview");
+            });
         }
     },
 
-    goToGame : function(song) {
-        $('#intro').addClass('animated bounceOutUp');
-        setTimeout(function(){
-            $('#intro').hide();
+    goToGame: function(song) {
+        $("#intro").addClass("animated bounceOutUp");
+        setTimeout(function() {
+            $("#intro").hide();
         }, 1000);
         App.next(song);
     },
 
-    next : function(song) {
+    next: function(song) {
         App.currentSong = song.song;
-        if (App.audio && typeof App.audio.stop == 'function') {
+        if (App.audio && typeof App.audio.stop == "function") {
             App.audio.stop();
         }
-        $('#suggestions').html('');
+        $("#suggestions").html("");
         App.hideHint();
         App.hideAnswer();
         App.hideWinner();
@@ -53,97 +50,94 @@ var App = {
     },
 
     showSuggestions: function() {
-        var out = '';
-        $.each(App.currentSong.suggestions, function(index, value){
-            out += '<li data-answer="' + value.answer + '">' + value.name + '</li>';
+        var out = "";
+        $.each(App.currentSong.suggestions, function(index, value) {
+            out += '<li data-answer="' + value.answer + '">' + value.name + "</li>";
         });
-        $('#suggestions').html(out);
-        $('#suggestions li').addClass('flipInX');
+        $("#suggestions").html(out);
+        $("#suggestions li").addClass("flipInX");
     },
     showHint: function() {
-
-        if ($('#answer').is(':visible')) {
+        if ($("#answer").is(":visible")) {
             return;
         }
 
-        if ($('#winner').is(':visible')) {
+        if ($("#winner").is(":visible")) {
             return;
         }
 
-        $('#hint').text(App.currentSong.year);
-        $('#hint').removeClass('fadeOutDown');
-        $('#hint').addClass('fadeInUp');
-        $('#hint').show();
+        $("#hint").text(App.currentSong.year);
+        $("#hint").removeClass("fadeOutDown");
+        $("#hint").addClass("fadeInUp");
+        $("#hint").show();
     },
     hideHint: function() {
-        $('#hint').removeClass('fadeInUp');
-        $('#hint').addClass('fadeOutDown');
-        setTimeout(function(){
-            $('#hint').hide();
+        $("#hint").removeClass("fadeInUp");
+        $("#hint").addClass("fadeOutDown");
+        setTimeout(function() {
+            $("#hint").hide();
         }, 450);
     },
     showAnswer: function(username) {
-
-        if ($('#winner').is(':visible')) {
+        if ($("#winner").is(":visible")) {
             return;
         }
 
         App.hideHint();
 
-        if (typeof username !== 'undefined') {
-            $('#player-right span').text(username);
-            $('#player-right').css({display: 'block'});
+        if (typeof username !== "undefined") {
+            $("#player-right span").text(username);
+            $("#player-right").css({ display: "block" });
         }
 
-        $('#timer').text('➜');
-        $('#answer').addClass('fadeInUp');
-        $('#answer').show();
-        $('#suggestions [data-answer=false]').addClass('wrong');
+        $("#timer").text("➜");
+        $("#answer").addClass("fadeInUp");
+        $("#answer").show();
+        $("#suggestions [data-answer=false]").addClass("wrong");
 
-        setTimeout(function(){
-            socket.emit('next');
+        setTimeout(function() {
+            socket.emit("next");
         }, App.pause);
     },
     hideAnswer: function() {
-        $('#player-right span').text('');
-        $('#player-right').css({display: 'none'});
-        $('#answer').hide();
-        $('#answer').removeClass('fadeInUp');
+        $("#player-right span").text("");
+        $("#player-right").css({ display: "none" });
+        $("#answer").hide();
+        $("#answer").removeClass("fadeInUp");
     },
     initTimer: function() {
-        $('#timer').removeClass('warning');
-        $('#timer').text(App.timerPlaceholder);
+        $("#timer").removeClass("warning");
+        $("#timer").text(App.timerPlaceholder);
     },
     timerNearEnd: function() {
-        $('#timer').addClass('warning');
+        $("#timer").addClass("warning");
     },
     playPreview: function() {
-
-        $('.artist').text(App.currentSong.artist.name);
-        $('.title').text(App.currentSong.title);
-        soundManager.destroySound('preview');
+        $(".artist").text(App.currentSong.artist.name);
+        $(".title").text(App.currentSong.title);
+        soundManager.destroySound("preview");
         App.audio = soundManager.createSound({
-            id: 'preview',
+            id: "preview",
             url: App.currentSong.preview,
             onload: function() {
                 var timestamp = Math.round(App.audio.duration / 3);
                 App.audio.onPosition(timestamp, App.showHint);
 
-                timestamp = Math.round(App.audio.duration * 2 / 3);
+                timestamp = Math.round((App.audio.duration * 2) / 3);
                 App.audio.onPosition(timestamp, App.hideHint);
 
                 timestamp = Math.floor(App.audio.duration - 5000);
                 App.audio.onPosition(timestamp, App.timerNearEnd);
             },
-            whileloading: function() {
-
-            },
+            whileloading: function() {},
             whileplaying: function() {
                 var mean = 0;
-                App.timestamp = Math.floor((App.audio.durationEstimate - App.audio.position) / 1000);
-                $('#timer').text(App.timestamp);
+                App.timestamp = Math.floor(
+                    (App.audio.durationEstimate - App.audio.position) / 1000
+                );
+                $("#timer").text(App.timestamp);
                 if (soundManager.usePeakData) {
-                    mean = (App.audio.peakData.left + App.audio.peakData.right / 2);
+                    mean = App.audio.peakData.left + App.audio.peakData.right / 2;
                 }
                 App.visualization.update(mean);
             },
@@ -156,21 +150,20 @@ var App = {
 
     showWinner: function(winner) {
         App.winner = winner;
-        $('#winner-name').text(winner);
-        $('#winner').show();
-        setTimeout(function(){
-            socket.emit('start');
+        $("#winner-name").text(winner);
+        $("#winner").show();
+        setTimeout(function() {
+            socket.emit("start");
         }, App.roundPause);
     },
     hideWinner: function() {
-        App.winner = '';
-        $('#winner-name').text('');
-        $('#winner').hide();
+        App.winner = "";
+        $("#winner-name").text("");
+        $("#winner").hide();
     }
 };
 
 App.visualization = {
-
     ctx: null,
     width: 300,
     height: 300,
@@ -178,17 +171,17 @@ App.visualization = {
     factor: 50,
 
     init: function() {
-        var paper = $('#visualization')[0];
+        var paper = $("#visualization")[0];
         paper.width = App.visualization.width;
         paper.height = App.visualization.height;
-        App.visualization.ctx = paper.getContext('2d');
+        App.visualization.ctx = paper.getContext("2d");
         App.visualization.update(0);
     },
 
-    update : function(value) {
+    update: function(value) {
         var ctx = App.visualization.ctx;
 
-        ctx.clearRect(0,0,300,300);
+        ctx.clearRect(0, 0, 300, 300);
 
         ctx.fillStyle = "#000";
 
@@ -202,9 +195,9 @@ App.visualization = {
         ctx.arc(
             Math.floor(App.visualization.width / 2),
             Math.floor(App.visualization.height / 2),
-            (App.visualization.minRadius + value * App.visualization.factor ),
+            App.visualization.minRadius + value * App.visualization.factor,
             0,
-            Math.PI*2,
+            Math.PI * 2,
             false
         );
         ctx.closePath();
@@ -213,43 +206,42 @@ App.visualization = {
 };
 
 var socket;
-$(function(){
-
+$(function() {
     App.init();
 
-    socket = io.connect('http://' + location.hostname);
+    socket = io.connect("http://" + location.hostname + ":" + location.port);
 
-    socket.emit('spectate',{});
+    socket.emit("spectate", {});
 
-    $('#start').on('click', function(){
-        socket.emit('start',{});
+    $("#start").on("click", function() {
+        socket.emit("start", {});
     });
 
-    socket.on('users', function(data){
+    socket.on("users", function(data) {
         var users = data.users;
-        var out = '';
+        var out = "";
         // var out = '<li>' + ((users.length == 1) ? '1 joueur' : users.length + ' joueurs') + '</li>';
-        for (var i=0,l=users.length; i<l; i++) {
+        for (var i = 0, l = users.length; i < l; i++) {
             if (users[i].hasJoined) {
-                out += '<li>' + users[i].username + ' (' + users[i].score + ')' + '</li>';
+                out += "<li>" + users[i].username + " (" + users[i].score + ")" + "</li>";
             } else {
-                out += '<li>' + users[i].username + ' (ready)' + '</li>';
+                out += "<li>" + users[i].username + " (ready)" + "</li>";
             }
         }
-        $('#players').html(out);
+        $("#players").html(out);
     });
-    socket.on('song', function(song){
+    socket.on("song", function(song) {
         //Hide intro
-        if ($("#intro").is(':visible')) {
+        if ($("#intro").is(":visible")) {
             App.goToGame(song);
         } else {
             App.next(song);
         }
     });
-    socket.on('right', function(username) {
+    socket.on("right", function(username) {
         App.showAnswer(username.username);
     });
-    socket.on('winner', function(winner){
+    socket.on("winner", function(winner) {
         App.showWinner(winner);
     });
 });
