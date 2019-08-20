@@ -1,104 +1,104 @@
 * {
-    font-weight: normal;
+  font-weight: normal;
 }
 body {
-    font-family: "MontserratRegular", 'Century Gothic', sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: "MontserratRegular", "Century Gothic", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 /* Players
 ******************************************************/
 #players {
-    background: #000;
-    color: #FFF;
-    padding: 12px;
-    font-size: 1.25em;
+  background: #000;
+  color: #fff;
+  padding: 12px;
+  font-size: 1.25em;
 }
-    #players li {
-        display: inline-block;
-        margin-right: 1em;
-    }
+#players li {
+  display: inline-block;
+  margin-right: 1em;
+}
 
 /* Intro
 ******************************************************/
 #intro {
-    background: #000;
-    color: #FFF;
-    position: absolute;
-    padding: 24px;
-    text-align: center;
-    font-size: 28px;
+  background: #000;
+  color: #fff;
+  position: absolute;
+  padding: 24px;
+  text-align: center;
+  font-size: 28px;
 
-    z-index: 1;
-    left: 0;
-    right: 0;
+  z-index: 1;
+  left: 0;
+  right: 0;
 }
-    #start {
-        display: inline-block;
-        padding: 6px;
-        background: #F0C;
-        cursor: pointer;
-        border: 6px solid #F0C;
-    }
-    #start:hover {
-        border: 6px solid #FFF;
-    }
+#start {
+  display: inline-block;
+  padding: 6px;
+  background: #f0c;
+  cursor: pointer;
+  border: 6px solid #f0c;
+}
+#start:hover {
+  border: 6px solid #fff;
+}
 
 /* Audio Player
 ******************************************************/
 #player {
-    width: 300px;
-    height: 300px;
-    float: right;
-    position: relative;
+  width: 300px;
+  height: 300px;
+  float: right;
+  position: relative;
 }
-    #timer {
-        position: absolute;
-        text-align: center;
-        width : 100px;
-        top: 130px;
-        left: 100px;
-        color: #FFF;
-        font-size: 36px;
-    }
+#timer {
+  position: absolute;
+  text-align: center;
+  width: 100px;
+  top: 130px;
+  left: 100px;
+  color: #fff;
+  font-size: 36px;
+}
 
 /* Suggestions
 ******************************************************/
 #suggestions {
-    margin: 0 300px 0 0;
-    padding: 0;
+  margin: 0 300px 0 0;
+  padding: 0;
 }
-    #suggestions li {
-        display: block;
-        list-style: none;
-        font-size: 48px;
-        padding: 8px;
-        border-bottom: 1px solid #000;
-        -moz-animation-duration: .5s;
-    }
-    #suggestions li:last-child {
-        border: 0;
-    }
+#suggestions li {
+  display: block;
+  list-style: none;
+  font-size: 48px;
+  padding: 8px;
+  border-bottom: 1px solid #000;
+  -moz-animation-duration: 0.5s;
+}
+#suggestions li:last-child {
+  border: 0;
+}
 
 .wrong {
-    color: #CCC;
+  color: #ccc;
 }
 
 /* Layer
 ******************************************************/
 #layer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 200px;
-    text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 200px;
+  text-align: center;
 
-    -moz-transform: skew(0deg, -7deg);
-    -webkit-transform: skew(0deg, -7deg);
-    -o-transform: skew(0deg, -7deg);
-    -ms-transform: skew(0deg, -7deg);
-    transform: skew(0deg, -7deg)
+  -moz-transform: skew(0deg, -7deg);
+  -webkit-transform: skew(0deg, -7deg);
+  -o-transform: skew(0deg, -7deg);
+  -ms-transform: skew(0deg, -7deg);
+  transform: skew(0deg, -7deg);
 }
 
 /* Hint, answer
@@ -106,33 +106,36 @@ body {
 #hint,
 #answer,
 #winner {
-    display: none;
-    padding: 18px;
-    font-size: 72px;
-    background: #F0C;
-    color: #FFF;
-    -moz-animation-duration: .5s;
+  display: none;
+  padding: 18px;
+  font-size: 72px;
+  background: #f0c;
+  color: #fff;
+  -moz-animation-duration: 0.5s;
+}
+#answer.no-winner {
+  background: black;
 }
 #hint {
-    margin-top: 200px;
+  margin-top: 200px;
 }
 #player .warning {
-    /*color: #FFF;*/
+  /*color: #FFF;*/
 }
 #winner {
-    background: #F60;
+  background: #f60;
 }
 
 /* Next
 ******************************************************/
 #next {
-    display: inline-block;
-    padding: 8px 12px;
-    border-radius: 24px;
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    cursor: pointer;
-    background: #000;
-    color: #FFF;
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 24px;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  cursor: pointer;
+  background: #000;
+  color: #fff;
 }

@@ -1,76 +1,84 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Player</title>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <meta
+      name="viewport"
+      content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"
+    />
     <style>
-    body {
+      body {
         margin: 0;
         padding: 0;
         font-family: Helvetica, Arial, sans-serif;
-    }
-    form,
-    #username {
+      }
+      form,
+      #username {
         background: #000;
-        color: #FFF;
+        color: #fff;
         text-align: center;
         margin: 0;
         padding: 12px;
         font-size: 1.25em;
-    }
-        form input {
-            font-size: 1.25em;
-            padding: 4px;
-        }
-    #suggestions {
+      }
+      form input {
+        font-size: 1.25em;
+        padding: 4px;
+      }
+      #suggestions {
         padding: 0 12px;
         text-align: center;
-    }
-    #suggestions ul {
+      }
+      #suggestions ul {
         padding: 0;
-    }
-    #suggestions li {
+      }
+      #suggestions li {
         margin: 12px 0;
         display: block;
         background: #000;
-        color: #FFF;
-        padding: 12px;
+        color: #fff;
+        padding: 16px;
         border-radius: 12px;
         cursor: pointer;
-    }
-    .right {
+        font-size: 24px;
+      }
+      .right {
         font-size: 72px;
         color: #66cc00;
-    }
-    .wrong {
+      }
+      .wrong {
         font-size: 72px;
         color: #cc3300;
-    }
-    .wait {
+      }
+      .wait {
         color: #000;
-    }
+      }
     </style>
-</head>
-<body>
-
-<div id="login">
-    <form action="" method="get">
+  </head>
+  <body>
+    <div id="login">
+      <form action="" method="get">
         <div>
-            <input type="text" value="" placeholder="username" name="nickname" id="nickname">
-            <input type="submit" value="Connect">
+          <input
+            type="text"
+            value=""
+            placeholder="username"
+            name="nickname"
+            id="nickname"
+          />
+          <input type="submit" value="Connect" />
         </div>
-    </form>
-</div>
-
-<div id="game">
-    <div id="username"></div>
-    <div id="suggestions">
+      </form>
     </div>
-</div>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/player/zepto.min.js"></script>
-<script src="/js/player/player.js?v=3"></script>
-</body>
+    <div id="game">
+      <div id="username"></div>
+      <div id="suggestions"></div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/player/zepto.min.js"></script>
+    <script src="/js/player/player.js?v=3"></script>
+  </body>
 </html>
