@@ -307,11 +307,6 @@
   },
   {
     "year": 1961,
-    "artist": "Édith Piaf",
-    "title": "Non je ne regrette rien"
-  },
-  {
-    "year": 1961,
     "artist": "Les Compagnons de la Chanson",
     "title": "La marche des anges"
   },
@@ -1484,11 +1479,6 @@
   },
   {
     "year": 1964,
-    "artist": "Fernand Raynaud",
-    "title": "Et v'lan, passe-moi l'éponge"
-  },
-  {
-    "year": 1964,
     "artist": "Romuald",
     "title": "Cow-boy"
   },
@@ -1540,12 +1530,6 @@
   },
   {
     "year": 1965,
-    "artist": "Salvatore Adamo",
-    "title": "Vous Permettez Monsieur?",
-    "rank": "1"
-  },
-  {
-    "year": 1965,
     "artist": "Enrico Macias",
     "title": "Les Filles de mon Pays",
     "rank": "1"
@@ -1554,12 +1538,6 @@
     "year": 1965,
     "artist": "Sheila",
     "title": "Toujours des Beaux Jours",
-    "rank": "1"
-  },
-  {
-    "year": 1965,
-    "artist": "Claude François",
-    "title": "Le Choses de la Maison",
     "rank": "1"
   },
   {
@@ -2545,12 +2523,6 @@
     "year": 1968,
     "artist": "Johnny Hallyday",
     "title": "San Francisco",
-    "rank": "1"
-  },
-  {
-    "year": 1968,
-    "artist": "Mireille Mathieu",
-    "title": "La Dernière Valse ",
     "rank": "1"
   },
   {
@@ -4960,11 +4932,6 @@
   },
   {
     "year": 1975,
-    "artist": "Nestor",
-    "title": "A la pêche aux moules"
-  },
-  {
-    "year": 1975,
     "artist": "Sheila",
     "title": "Quel tempérament de feu"
   },
@@ -5172,12 +5139,6 @@
   },
   {
     "year": 1976,
-    "artist": "Joe Dassin",
-    "title": "Ca va pas changer le monde",
-    "rank": "1"
-  },
-  {
-    "year": 1976,
     "artist": "Dalida",
     "title": "J'attendrai",
     "rank": "1"
@@ -5286,11 +5247,6 @@
     "year": 1976,
     "artist": "Abba",
     "title": "Fernando"
-  },
-  {
-    "year": 1976,
-    "artist": "Johnny Hallyday",
-    "title": "Réquiem pour un fou"
   },
   {
     "year": 1976,
@@ -7112,12 +7068,6 @@
     "year": 1981,
     "artist": "Heidi",
     "title": "Générique TV"
-  },
-  {
-    "year": 1982,
-    "artist": "Michel Sardou",
-    "title": "Les lacs du Connemara",
-    "rank": "1"
   },
   {
     "year": 1982,
@@ -10748,11 +10698,6 @@
     "artist": "La Compagnie Créole",
     "title": "Ma 1ère biguine-partie",
     "rank": "15"
-  },
-  {
-    "year": 1988,
-    "artist": "Simon Et Les Modanais",
-    "title": "Etoile des neiges"
   },
   {
     "year": 1988,
@@ -16055,12 +16000,6 @@
     "artist": "2 Be 3",
     "title": "Pour être libre",
     "rank": "15"
-  },
-  {
-    "year": 1997,
-    "artist": "Andrea Bocelli & Hélène Ségara",
-    "title": "Vivo per lei - je vis pour elle",
-    "rank": "9"
   },
   {
     "year": 1997,
@@ -23024,7 +22963,7 @@
   },
   {
     "year": 2006,
-    "artist": "Johnny Hallyday & Ministere Amer feat. Doc Gyneco",
+    "artist": "Johnny Hallyday & Ministère A.M.E.R. feat. Doc Gyneco",
     "title": "Le temps passe",
     "rank": "4"
   },
@@ -25706,11 +25645,6 @@
   },
   {
     "year": 2009,
-    "title": "Si Tu N'Etais Plus Là",
-    "artist": "Sheryfa Luna"
-  },
-  {
-    "year": 2009,
     "title": "Triste Novembre",
     "artist": "Marc Antoine"
   },
@@ -26625,11 +26559,6 @@
   },
   {
     "year": 2010,
-    "title": "Sexy Bitch (feat. Akon)",
-    "artist": "David Guetta feat. Akon"
-  },
-  {
-    "year": 2010,
     "title": "I Gotta Feeling",
     "artist": "The Black Eyed Peas"
   },
@@ -26682,11 +26611,6 @@
     "year": 2010,
     "title": "Undisclosed Desires",
     "artist": "Muse"
-  },
-  {
-    "year": 2010,
-    "title": "When Love Takes Over (feat. Kelly Rowland)",
-    "artist": "David Guetta feat. Kelly Rowland"
   },
   {
     "year": 2010,
@@ -27655,11 +27579,6 @@
   },
   {
     "year": 2011,
-    "title": "Waka Waka (This Time for Africa) [The Official 2010 FIFA World Cup (TM) Song]",
-    "artist": "Shakira feat. Freshlyground"
-  },
-  {
-    "year": 2011,
     "title": "Just the Way You Are",
     "artist": "Bruno Mars"
   },
@@ -27677,11 +27596,6 @@
     "year": 2011,
     "title": "All Of The Lights",
     "artist": "Kanye West"
-  },
-  {
-    "year": 2011,
-    "title": "Don’t Stop The Party",
-    "artist": "The Black Eyed Peas"
   },
   {
     "year": 2011,
@@ -27717,11 +27631,6 @@
     "year": 2011,
     "title": "Hometown Glory",
     "artist": "Adele"
-  },
-  {
-    "year": 2011,
-    "title": "Loca",
-    "artist": "Shakira feat. Dizzee Rascal"
   },
   {
     "year": 2011,
@@ -27785,11 +27694,6 @@
   },
   {
     "year": 2011,
-    "title": "Sexy Bitch (feat. Akon)",
-    "artist": "David Guetta feat. Akon"
-  },
-  {
-    "year": 2011,
     "title": "More - RedOne Jimmy Joker Remix",
     "artist": "Usher"
   },
@@ -27825,11 +27729,6 @@
   },
   {
     "year": 2011,
-    "title": "Club Can't Handle Me (feat. David Guetta) - From the Step Up 3D Soundtrack",
-    "artist": "Flo Rida feat. David Guetta"
-  },
-  {
-    "year": 2011,
     "title": "Last Friday Night (T.G.I.F.)",
     "artist": "Katy Perry"
   },
@@ -27837,11 +27736,6 @@
     "year": 2011,
     "title": "Intro",
     "artist": "The xx"
-  },
-  {
-    "year": 2011,
-    "title": "Memories (feat. Kid Cudi)",
-    "artist": "David Guetta feat. Kid Cudi"
   },
   {
     "year": 2011,
@@ -27897,11 +27791,6 @@
     "year": 2011,
     "title": "Somewhere Over The Rainbow_What A Wonderful World",
     "artist": "Israel Kamakawiwo'ole"
-  },
-  {
-    "year": 2011,
-    "title": "One (Your Name) - Radio Edit",
-    "artist": "Swedish House Mafia feat. Pharrell Williams"
   },
   {
     "year": 2011,
@@ -28171,11 +28060,6 @@
   },
   {
     "year": 2012,
-    "title": "We Found Love",
-    "artist": "Rihanna feat. Calvin Harris"
-  },
-  {
-    "year": 2012,
     "title": "Pursuit Of Happiness (Nightmare)",
     "artist": "Kid Cudi feat. MGMT, Ratatat"
   },
@@ -28228,11 +28112,6 @@
     "year": 2012,
     "title": "Blue Jeans - Album Version - Remastered",
     "artist": "Lana Del Rey"
-  },
-  {
-    "year": 2012,
-    "title": "Hangover",
-    "artist": "Taio Cruz feat. Flo Rida"
   },
   {
     "year": 2012,
@@ -28296,11 +28175,6 @@
   },
   {
     "year": 2012,
-    "title": "Moves Like Jagger - Studio Recording From The Voice Performance",
-    "artist": "Maroon 5 feat. Christina Aguilera"
-  },
-  {
-    "year": 2012,
     "title": "She Doesn't Mind",
     "artist": "Sean Paul"
   },
@@ -28308,11 +28182,6 @@
     "year": 2012,
     "title": "Good Time",
     "artist": "Owl City feat. Carly Rae Jepsen"
-  },
-  {
-    "year": 2012,
-    "title": "A Real Hero",
-    "artist": "College & Electric Youth"
   },
   {
     "year": 2012,
@@ -28626,11 +28495,6 @@
   },
   {
     "year": 2013,
-    "title": "One Day / Reckoning Song (Wankelmut Remix) - Radio Edit",
-    "artist": "Asaf Avidan & the Mojos feat. Wankelmut"
-  },
-  {
-    "year": 2013,
     "title": "Ho Hey",
     "artist": "The Lumineers"
   },
@@ -28731,11 +28595,6 @@
   },
   {
     "year": 2013,
-    "title": "We Are Young (feat. Janelle Monáe)",
-    "artist": "fun. feat. Janelle Monáe"
-  },
-  {
-    "year": 2013,
     "title": "Gangnam Style (강남스타일)",
     "artist": "PSY"
   },
@@ -28781,23 +28640,8 @@
   },
   {
     "year": 2013,
-    "title": "\"Read All About It, Pt. III\"",
-    "artist": "Emeli Sandé"
-  },
-  {
-    "year": 2013,
-    "title": "Bangarang (feat. Sirah)",
-    "artist": "Skrillex feat. Sirah"
-  },
-  {
-    "year": 2013,
     "title": "bâtard",
     "artist": "Stromae"
-  },
-  {
-    "year": 2013,
-    "title": "Somebody That I Used To Know",
-    "artist": "Gotye feat. Kimbra"
   },
   {
     "year": 2013,
@@ -28871,11 +28715,6 @@
   },
   {
     "year": 2013,
-    "title": "She Wolf (Falling to Pieces) (feat. Sia)",
-    "artist": "David Guetta feat. Sia"
-  },
-  {
-    "year": 2013,
     "title": "BLIZZARD",
     "artist": "Fauve"
   },
@@ -28918,11 +28757,6 @@
     "year": 2013,
     "title": "Holy Grail",
     "artist": "JAY Z feat. Justin Timberlake"
-  },
-  {
-    "year": 2013,
-    "title": "Home",
-    "artist": "Edward Sharpe & The Magnetic Zeros"
   },
   {
     "year": 2013,
@@ -29236,11 +29070,6 @@
   },
   {
     "year": 2014,
-    "title": "Can't Hold Us (feat. Ray Dalton)",
-    "artist": "Macklemore & Ryan Lewis feat. Ray Dalton"
-  },
-  {
-    "year": 2014,
     "title": "Maps",
     "artist": "Maroon 5"
   },
@@ -29258,11 +29087,6 @@
     "year": 2014,
     "title": "Wasting My Young Years",
     "artist": "London Grammar"
-  },
-  {
-    "year": 2014,
-    "title": "Instant Crush",
-    "artist": "Daft Punk feat. Julian Casablancas"
   },
   {
     "year": 2014,
@@ -29486,11 +29310,6 @@
   },
   {
     "year": 2014,
-    "title": "Thrift Shop (feat. Wanz)",
-    "artist": "Macklemore & Ryan Lewis feat. Wanz"
-  },
-  {
-    "year": 2014,
     "title": "Je ne dirai rien (feat. The Shin Sekaï & Doomams)",
     "artist": "Black M feat. The Shin Sekai, Doomams"
   },
@@ -29658,11 +29477,6 @@
     "year": 2015,
     "artist": "Marina Kaye",
     "title": "Homeless"
-  },
-  {
-    "year": 2015,
-    "artist": "Mark Ronson feat. Bruno Mars",
-    "title": "Uptown Funk"
   },
   {
     "year": 2015,
@@ -29916,21 +29730,6 @@
   },
   {
     "year": 2015,
-    "title": "Blame",
-    "artist": "Calvin Harris feat. John Newman"
-  },
-  {
-    "year": 2015,
-    "title": "Bang Bang",
-    "artist": "Jessie J feat. Ariana Grande, Nicki Minaj"
-  },
-  {
-    "year": 2015,
-    "title": "Stay High - Habits Remix",
-    "artist": "Tove Lo feat. Hippie Sabotage"
-  },
-  {
-    "year": 2015,
     "title": "King Kunta",
     "artist": "Kendrick Lamar"
   },
@@ -29978,11 +29777,6 @@
     "year": 2015,
     "title": "Hold Back The River",
     "artist": "James Bay"
-  },
-  {
-    "year": 2015,
-    "title": "Rather Be (feat. Jess Glynne)",
-    "artist": "Clean Bandit feat. Jess Glynne"
   },
   {
     "year": 2015,
@@ -30098,11 +29892,6 @@
     "year": 2015,
     "title": "Castle In The Snow",
     "artist": "The Avener feat. Kadebostany"
-  },
-  {
-    "year": 2015,
-    "title": "Waves - Robin Schulz Radio Edit",
-    "artist": "Mr. Probz feat. Robin Schulz"
   },
   {
     "year": 2016,
@@ -30826,11 +30615,6 @@
   },
   {
     "year": 2018,
-    "artist": "Camila Cabello feat. Young Thug",
-    "title": "Havana"
-  },
-  {
-    "year": 2018,
     "artist": "Cecilia Krull vs Gavin Moss",
     "title": "My Life Is Going On"
   },
@@ -31101,11 +30885,6 @@
   },
   {
     "year": 2018,
-    "title": "Mwaka Moon",
-    "artist": "Kalash feat. Damso"
-  },
-  {
-    "year": 2018,
     "title": "Django",
     "artist": "Dadju feat. Franglish"
   },
@@ -31128,11 +30907,6 @@
     "year": 2018,
     "title": "Reine",
     "artist": "Dadju"
-  },
-  {
-    "year": 2018,
-    "title": "A l'ammoniaque",
-    "artist": "PNL"
   },
   {
     "year": 2018,
