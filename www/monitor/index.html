@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Monitor</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/monitor/montserrat/stylesheet.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/monitor/animate.css" />
+    <link rel="stylesheet" type="text/css" href="/monitor/screen.css" />
+  </head>
+  <body>
+    <div id="players">&nbsp;</div>
+
+    <div id="intro">
+      <h2>Join the game</h2>
+      <h1><span id="join-url"></span></h1>
+      <span id="start">START</span>
+    </div>
+
+    <div id="game">
+      <div id="player">
+        <canvas id="visualization"></canvas>
+        <span id="timer"></span>
+      </div>
+
+      <ul id="suggestions"></ul>
+
+      <div id="layer">
+        <div id="hint"></div>
+
+        <div id="answer">
+          <div id="player-right"><span></span> guessed</div>
+          <div class="artist"></div>
+          <div class="title"></div>
+        </div>
+
+        <div id="winner">
+          <span id="winner-name"></span> is the winner!
+          <div class="artist"></div>
+          <div class="title"></div>
+        </div>
+      </div>
+    </div>
+    <pre id="console"></pre>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/monitor/soundmanagerv2/script/soundmanager2-nodebug.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      function detectFlash() {
+        //http://stackoverflow.com/questions/998245/how-can-i-detect-if-flash-is-installed-and-if-not-display-a-hidden-div-that-inf
+        var hasFlash = false;
+        try {
+          var fo = new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+          if (fo) {
+            hasFlash = true;
+          }
+        } catch (e) {
+          if (
+            navigator.mimeTypes["application/x-shockwave-flash"] != undefined
+          ) {
+            hasFlash = true;
+          }
+        }
+        return hasFlash;
+      }
+
+      soundManager.url = "/monitor/soundmanagerv2/swf/";
+      if (detectFlash()) {
+        soundManager.usePeakData = true;
+        soundManager.flashVersion = 9;
+        soundManager.flash9Options = { usePeakData: true };
+      }
+    </script>
+    <script src="/monitor/monitor.js"></script>
+  </body>
+</html>

@@ -8,11 +8,12 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.static("www"));
 app.get("/", function(req, res) {
-    res.sendfile("/www/index.html", { root: __dirname });
+  res.redirect("/player/index.html");
 });
 app.get("/spectate", function(req, res) {
-    res.sendfile("/www/spectate.html", { root: __dirname });
+  res.redirect("/monitor/index.html");
 });
 
 Game.init(io);
 server.listen(PORT);
+console.log(`Monitor: http://localhost:${PORT}/monitor`);
