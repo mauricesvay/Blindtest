@@ -1,30 +1,19 @@
-var Game = require("./lib/Game");
-var express = require("express");
-var app = express();
-var http = require("http").Server(app);
-var io = require("socket.io")(http);
+const Game = require("./lib/Game");
+const express = require("express");
+const app = express();
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
 
-var PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
-// app.configure("development", function() {
-app.use(express.static(__dirname + "/www"));
-// });
-// app.configure("production", function() {
-//   app.use(express.static(__dirname + "/www"));
-// });
+app.use(express.static("www"));
 app.get("/", function(req, res) {
-  res.sendfile("/www/index.html", { root: __dirname });
+  res.redirect("/player/index.html");
 });
 app.get("/spectate", function(req, res) {
-  res.sendfile("/www/spectate.html", { root: __dirname });
+  res.redirect("/monitor/index.html");
 });
-// io.configure("development", function() {
-//   io.set("log level", 1);
-// });
-// io.configure(function() {
-io.set("transports", ["xhr-polling"]);
-io.set("polling duration", 10);
-// });
 
-app.listen(PORT);
 Game.init(io);
+server.listen(PORT);
+console.log(`Monitor: http://localhost:${PORT}/monitor`);
