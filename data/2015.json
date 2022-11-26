@@ -1,0 +1,507 @@
+[
+  {
+    "year": 2015,
+    "artist": "Adele",
+    "title": "Hello"
+  },
+  {
+    "year": 2015,
+    "artist": "Ariana Grande feat. Kendji Girac",
+    "title": "One Last Time (Attends-moi)"
+  },
+  {
+    "year": 2015,
+    "artist": "Calvin Harris & Disciples (en)",
+    "title": "How Deep Is Your Love"
+  },
+  {
+    "year": 2015,
+    "artist": "Charlie Puth feat. Meghan Trainor",
+    "title": "Marvin Gaye"
+  },
+  {
+    "year": 2015,
+    "artist": "Feder feat. Lyse",
+    "title": "Goodbye"
+  },
+  {
+    "year": 2015,
+    "artist": "Fréro Delavega",
+    "title": "Le Chant des sirènes"
+  },
+  {
+    "year": 2015,
+    "artist": "Hozier",
+    "title": "Take Me to Church"
+  },
+  {
+    "year": 2015,
+    "artist": "JUL",
+    "title": "Amnésia"
+  },
+  {
+    "year": 2015,
+    "artist": "JUL",
+    "title": "En Y"
+  },
+  {
+    "year": 2015,
+    "artist": "Jason Derulo",
+    "title": "Want to Want Me"
+  },
+  {
+    "year": 2015,
+    "artist": "Josef Salvat",
+    "title": "Open Season (Une autre saison)"
+  },
+  {
+    "year": 2015,
+    "artist": "Kygo feat. Parson James",
+    "title": "Stole the Show"
+  },
+  {
+    "year": 2015,
+    "artist": "L.E.J",
+    "title": "Summer 2015"
+  },
+  {
+    "year": 2015,
+    "artist": "Lost Frequencies feat. Easton Corbin",
+    "title": "Are You With Me"
+  },
+  {
+    "year": 2015,
+    "artist": "Lost Frequencies feat. Janieck Devy (en)",
+    "title": "Reality"
+  },
+  {
+    "year": 2015,
+    "artist": "Louane",
+    "title": "Avenir"
+  },
+  {
+    "year": 2015,
+    "artist": "Major Lazer & DJ Snake feat. MØ",
+    "title": "Lean On"
+  },
+  {
+    "year": 2015,
+    "artist": "Marina Kaye",
+    "title": "Homeless"
+  },
+  {
+    "year": 2015,
+    "artist": "Maître Gims feat. Niska",
+    "title": "Sapés comme jamais"
+  },
+  {
+    "year": 2015,
+    "artist": "Mylène Farmer & Sting",
+    "title": "Stolen Car"
+  },
+  {
+    "year": 2015,
+    "artist": "Nicky Jam & Enrique Iglesias",
+    "title": "El Perdón"
+  },
+  {
+    "year": 2015,
+    "artist": "OMI",
+    "title": "Cheerleader (Felix Jaehn remix)"
+  },
+  {
+    "year": 2015,
+    "artist": "One Direction",
+    "title": "Drag Me Down"
+  },
+  {
+    "year": 2015,
+    "artist": "R. City (en) feat. Adam Levine",
+    "title": "Locked Away (en)"
+  },
+  {
+    "year": 2015,
+    "artist": "Sam Smith",
+    "title": "I'm Not the Only One"
+  },
+  {
+    "year": 2015,
+    "artist": "The Weeknd",
+    "title": "Earned It"
+  },
+  {
+    "year": 2015,
+    "title": "See You Again (feat. Charlie Puth)",
+    "artist": "Wiz Khalifa feat. Charlie Puth"
+  },
+  {
+    "year": 2015,
+    "title": "Love Me Like You Do - From \"Fifty Shades Of Grey\"",
+    "artist": "Ellie Goulding"
+  },
+  {
+    "year": 2015,
+    "title": "On verra",
+    "artist": "Nekfeu"
+  },
+  {
+    "year": 2015,
+    "title": "Ain't Nobody (Loves Me Better) (feat. Jasmine Thompson)",
+    "artist": "Felix Jaehn feat. Jasmine Thompson"
+  },
+  {
+    "year": 2015,
+    "title": "Firestone (feat. Conrad Sewell)",
+    "artist": "Kygo feat. Conrad Sewell"
+  },
+  {
+    "year": 2015,
+    "title": "Sugar",
+    "artist": "Maroon 5"
+  },
+  {
+    "year": 2015,
+    "title": "Hey Mama (feat. Nicki Minaj, Bebe Rexha & Afrojack)",
+    "artist": "David Guetta feat. Nicki Minaj, Bebe Rexha, Afrojack"
+  },
+  {
+    "year": 2015,
+    "title": "Elastic Heart",
+    "artist": "Sia"
+  },
+  {
+    "year": 2015,
+    "title": "Thinking out Loud",
+    "artist": "Ed Sheeran"
+  },
+  {
+    "year": 2015,
+    "title": "GDFR (feat. Sage the Gemini & Lookas)",
+    "artist": "Flo Rida feat. Sage The Gemini, Lookas"
+  },
+  {
+    "year": 2015,
+    "title": "FourFiveSeconds",
+    "artist": "Rihanna feat. Kanye West, Paul McCartney"
+  },
+  {
+    "year": 2015,
+    "title": "Bitch Better Have My Money",
+    "artist": "Rihanna"
+  },
+  {
+    "year": 2015,
+    "title": "Can't Feel My Face",
+    "artist": "The Weeknd"
+  },
+  {
+    "year": 2015,
+    "title": "Est-ce que tu m'aimes ? - Pilule Bleue",
+    "artist": "Maître Gims"
+  },
+  {
+    "year": 2015,
+    "title": "Trap Queen",
+    "artist": "Fetty Wap"
+  },
+  {
+    "year": 2015,
+    "title": "Waiting For Love",
+    "artist": "Avicii"
+  },
+  {
+    "year": 2015,
+    "title": "Worth It",
+    "artist": "Fifth Harmony feat. Kid Ink"
+  },
+  {
+    "year": 2015,
+    "title": "I Really Like You",
+    "artist": "Carly Rae Jepsen"
+  },
+  {
+    "year": 2015,
+    "title": "Break the Rules",
+    "artist": "Charli XCX"
+  },
+  {
+    "year": 2015,
+    "title": "Where Are Ü Now (with Justin Bieber)",
+    "artist": "Jack Ü feat. Skrillex, Diplo, Justin Bieber"
+  },
+  {
+    "year": 2015,
+    "title": "Chandelier",
+    "artist": "Sia"
+  },
+  {
+    "year": 2015,
+    "title": "Outside",
+    "artist": "Calvin Harris feat. Ellie Goulding"
+  },
+  {
+    "year": 2015,
+    "title": "Ayo",
+    "artist": "Chris Brown feat. Tyga"
+  },
+  {
+    "year": 2015,
+    "title": "Fade Out Lines - The Avener Rework",
+    "artist": "The Avener feat. Phoebe Killdeer"
+  },
+  {
+    "year": 2015,
+    "title": "Sugar (feat. Francesco Yates)",
+    "artist": "Robin Schulz feat. Francesco Yates"
+  },
+  {
+    "year": 2015,
+    "title": "What Do You Mean?",
+    "artist": "Justin Bieber"
+  },
+  {
+    "year": 2015,
+    "title": "Shut Up and Dance",
+    "artist": "WALK THE MOON"
+  },
+  {
+    "year": 2015,
+    "title": "Watch Me (Whip / Nae Nae)",
+    "artist": "Silentó"
+  },
+  {
+    "year": 2015,
+    "title": "Le chant des sirènes",
+    "artist": "Fréro Delavega"
+  },
+  {
+    "year": 2015,
+    "title": "King",
+    "artist": "Years & Years"
+  },
+  {
+    "year": 2015,
+    "title": "Heroes (we could be)",
+    "artist": "Alesso feat. Tove Lo"
+  },
+  {
+    "year": 2015,
+    "title": "Uncover",
+    "artist": "Zara Larsson"
+  },
+  {
+    "year": 2015,
+    "title": "England Skies",
+    "artist": "Shake Shake Go"
+  },
+  {
+    "year": 2015,
+    "title": "Stay With Me",
+    "artist": "Sam Smith"
+  },
+  {
+    "year": 2015,
+    "title": "Our Own House",
+    "artist": "MisterWives"
+  },
+  {
+    "year": 2015,
+    "title": "Dangerous (feat. Sam Martin)",
+    "artist": "David Guetta"
+  },
+  {
+    "year": 2015,
+    "title": "I Don't Like It, I Love It (feat. Robin Thicke & Verdine White)",
+    "artist": "Flo Rida feat. Robin Thicke, Verdine White"
+  },
+  {
+    "year": 2015,
+    "title": "Ma dope",
+    "artist": "Nekfeu feat. S.Pri Noir"
+  },
+  {
+    "year": 2015,
+    "title": "Alone",
+    "artist": "Selah Sue"
+  },
+  {
+    "year": 2015,
+    "title": "The Nights",
+    "artist": "Avicii"
+  },
+  {
+    "year": 2015,
+    "title": "Nique les clones, Pt. II",
+    "artist": "Nekfeu"
+  },
+  {
+    "year": 2015,
+    "title": "Headlights (feat. Ilsey)",
+    "artist": "Robin Schulz feat. Ilsey"
+  },
+  {
+    "year": 2015,
+    "title": "King Kunta",
+    "artist": "Kendrick Lamar"
+  },
+  {
+    "year": 2015,
+    "title": "Andalouse",
+    "artist": "Kendji Girac"
+  },
+  {
+    "year": 2015,
+    "title": "Jour 1",
+    "artist": "Louane"
+  },
+  {
+    "year": 2015,
+    "title": "American Oxygen",
+    "artist": "Rihanna"
+  },
+  {
+    "year": 2015,
+    "title": "Cool Kids",
+    "artist": "Echosmith"
+  },
+  {
+    "year": 2015,
+    "title": "A Sky Full of Stars",
+    "artist": "Coldplay"
+  },
+  {
+    "year": 2015,
+    "title": "You're On (feat. Kyan)",
+    "artist": "Madeon feat. Kyan"
+  },
+  {
+    "year": 2015,
+    "title": "Christine",
+    "artist": "Christine and the Queens"
+  },
+  {
+    "year": 2015,
+    "title": "You Know You Like It",
+    "artist": "DJ Snake feat. AlunaGeorge"
+  },
+  {
+    "year": 2015,
+    "title": "Hold Back The River",
+    "artist": "James Bay"
+  },
+  {
+    "year": 2015,
+    "title": "Runaway (U & I)",
+    "artist": "Galantis"
+  },
+  {
+    "year": 2015,
+    "title": "Love Me Harder",
+    "artist": "Ariana Grande feat. The Weeknd"
+  },
+  {
+    "year": 2015,
+    "title": "Egérie",
+    "artist": "Nekfeu"
+  },
+  {
+    "year": 2015,
+    "title": "Walk",
+    "artist": "Kwabs"
+  },
+  {
+    "year": 2015,
+    "title": "The Hills",
+    "artist": "The Weeknd"
+  },
+  {
+    "year": 2015,
+    "title": "Brisé - Pilule Bleue",
+    "artist": "Maître Gims"
+  },
+  {
+    "year": 2015,
+    "title": "Fresh Prince (feat. Uncle Phil)",
+    "artist": "Soprano feat. Uncle Phil"
+  },
+  {
+    "year": 2015,
+    "title": "All About That Bass",
+    "artist": "Meghan Trainor"
+  },
+  {
+    "year": 2015,
+    "title": "Tempête",
+    "artist": "Nekfeu"
+  },
+  {
+    "year": 2015,
+    "title": "Good For You",
+    "artist": "Selena Gomez feat. A$AP Rocky"
+  },
+  {
+    "year": 2015,
+    "title": "Laissez passer - Pilule Bleue",
+    "artist": "Maître Gims"
+  },
+  {
+    "year": 2015,
+    "title": "Comme d'hab",
+    "artist": "Bigflo & Oli"
+  },
+  {
+    "year": 2015,
+    "title": "Stolen Dance",
+    "artist": "Milky Chance"
+  },
+  {
+    "year": 2015,
+    "title": "Time of Our Lives",
+    "artist": "Pitbull feat. Ne-Yo"
+  },
+  {
+    "year": 2015,
+    "title": "Saint Claude (Version Française)",
+    "artist": "Christine and the Queens"
+  },
+  {
+    "year": 2015,
+    "title": "Conmigo",
+    "artist": "Kendji Girac"
+  },
+  {
+    "year": 2015,
+    "title": "Photograph",
+    "artist": "Ed Sheeran"
+  },
+  {
+    "year": 2015,
+    "title": "I'm an Albatraoz",
+    "artist": "AronChupa"
+  },
+  {
+    "year": 2015,
+    "title": "Wicked Wonderland - Radio Edit",
+    "artist": "Martin Tungevaag"
+  },
+  {
+    "year": 2015,
+    "title": "Budapest",
+    "artist": "George Ezra"
+  },
+  {
+    "year": 2015,
+    "title": "All of Me",
+    "artist": "John Legend"
+  },
+  {
+    "year": 2015,
+    "title": "Je vole",
+    "artist": "Louane"
+  },
+  {
+    "year": 2015,
+    "title": "Castle In The Snow",
+    "artist": "The Avener feat. Kadebostany"
+  }
+]
