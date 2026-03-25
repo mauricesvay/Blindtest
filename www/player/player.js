@@ -6,20 +6,26 @@ var App = {
   init: function () {
     socket = io.connect("http://" + location.hostname + ":" + location.port);
 
-    //Login
-    $("form").on("submit", function (e) {
+    // Login
+    const form = document.querySelector("form");
+    const nicknameInput = document.getElementById("nickname");
+    const usernameDisplay = document.getElementById("username");
+    const suggestionsContainer = document.getElementById("suggestions");
+
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var username = $("#nickname").val();
+      const username = nicknameInput.value;
       App.username = username;
-      $("#username").text(username);
+      usernameDisplay.textContent = username;
       socket.emit("login", {
         username: username,
       });
     });
 
     socket.on("login", function () {
-      $("form").hide();
-      $("#suggestions").html('<span class="wait">Ready for next round</span>');
+      form.style.display = "none";
+      suggestionsContainer.innerHTML =
+        '<span class="wait">Ready for next round</span>';
     });
 
     socket.on("refused", function () {
@@ -41,14 +47,14 @@ var App = {
       }
     });
 
-    //Suggestions
-    var eventType =
-      typeof window.ontouchstart === "undefined" ? "click" : "tap";
-    $("#suggestions").on(eventType, function (e) {
-      if ($(e.target).attr("data-value")) {
-        var value = $(e.target).attr("data-value");
+    // Suggestions
+    const eventType =
+      typeof window.ontouchstart === "undefined" ? "click" : "touchend";
+    suggestionsContainer.addEventListener(eventType, function (e) {
+      const dataValue = e.target.dataset.value;
+      if (dataValue !== undefined) {
         socket.emit("button", {
-          button: value,
+          button: dataValue,
         });
       }
     });
@@ -60,18 +66,20 @@ var App = {
   },
 
   onRight: function () {
-    $("#suggestions").html("<span class='right'>✅</span>");
+    document.getElementById("suggestions").innerHTML =
+      "<span class='right'>✅</span>";
   },
 
-  //@TODO : add case when other user is right onOtherRight
+  // @TODO : add case when other user is right onOtherRight
 
   onWrong: function () {
-    $("#suggestions").html("<span class='wrong'>❌</span>");
+    document.getElementById("suggestions").innerHTML =
+      "<span class='wrong'>❌</span>";
   },
 
   showSuggestions: function () {
-    var out = "";
-    for (var i = 0, l = App.currentSong.suggestions.length; i < l; i++) {
+    let out = "";
+    for (let i = 0, l = App.currentSong.suggestions.length; i < l; i++) {
       out +=
         '<li data-value="' +
         i +
@@ -79,10 +87,11 @@ var App = {
         App.currentSong.suggestions[i].name +
         "</li>";
     }
-    $("#suggestions").html("<ul>" + out + "</ul>");
+    document.getElementById("suggestions").innerHTML = "<ul>" + out + "</ul>";
   },
 };
-$(function () {
+
+document.addEventListener("DOMContentLoaded", function () {
   App.init();
 });
 

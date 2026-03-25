@@ -7,26 +7,28 @@ var App = {
   timerPlaceholder: "♫",
 
   init: function () {
-    var url = window.location + "";
-    $("#join-url").html(url.replace("/spectate", ""));
+    const url = window.location + "";
+    document.getElementById("join-url").innerHTML = url.replace(
+      "/spectate",
+      ""
+    );
 
     App.visualization.init();
 
-    // $('#next').on('click', function(){
-    //     socket.emit('next');
-    // });
+    // socket.emit('next');
     if (!soundManager.usePeakData) {
       App.timerPlaceholder = "▶";
-      $("#timer").on("click", function () {
+      document.getElementById("timer").addEventListener("click", function () {
         App.audio.play("preview");
       });
     }
   },
 
   goToGame: function (song) {
-    $("#intro").addClass("animated bounceOutUp");
+    const intro = document.getElementById("intro");
+    intro.classList.add("animated", "bounceOutUp");
     setTimeout(function () {
-      $("#intro").hide();
+      intro.style.display = "none";
     }, 1000);
     App.next(song);
   },
@@ -36,7 +38,7 @@ var App = {
     if (App.audio && typeof App.audio.stop == "function") {
       App.audio.stop();
     }
-    $("#suggestions").html("");
+    document.getElementById("suggestions").innerHTML = "";
     App.hideHint();
     App.hideAnswer();
     App.hideWinner();
@@ -50,78 +52,105 @@ var App = {
   },
 
   showSuggestions: function () {
-    var out = "";
-    $.each(App.currentSong.suggestions, function (index, value) {
+    let out = "";
+    App.currentSong.suggestions.forEach(function (value) {
       out += '<li data-answer="' + value.answer + '">' + value.name + "</li>";
     });
-    $("#suggestions").html(out);
-    $("#suggestions li").addClass("flipInX");
+    const suggestionsEl = document.getElementById("suggestions");
+    suggestionsEl.innerHTML = out;
+    suggestionsEl.querySelectorAll("li").forEach(function (el) {
+      el.classList.add("flipInX");
+    });
   },
+
   showHint: function () {
-    if ($("#answer").is(":visible")) {
+    const answerEl = document.getElementById("answer");
+    const winnerEl = document.getElementById("winner");
+
+    if (
+      answerEl.style.display === "block" ||
+      winnerEl.style.display === "block"
+    ) {
       return;
     }
 
-    if ($("#winner").is(":visible")) {
-      return;
-    }
-
-    $("#hint").text(App.currentSong.year);
-    $("#hint").removeClass("fadeOutDown");
-    $("#hint").addClass("fadeInUp");
-    $("#hint").show();
+    const hintEl = document.getElementById("hint");
+    hintEl.textContent = App.currentSong.year;
+    hintEl.classList.remove("fadeOutDown");
+    hintEl.classList.add("fadeInUp");
+    hintEl.style.display = "block";
   },
+
   hideHint: function () {
-    $("#hint").removeClass("fadeInUp");
-    $("#hint").addClass("fadeOutDown");
+    const hintEl = document.getElementById("hint");
+    hintEl.classList.remove("fadeInUp");
+    hintEl.classList.add("fadeOutDown");
     setTimeout(function () {
-      $("#hint").hide();
+      hintEl.style.display = "none";
     }, 450);
   },
+
   showAnswer: function (username) {
-    if ($("#winner").is(":visible")) {
+    const winnerEl = document.getElementById("winner");
+    if (winnerEl.style.display === "block") {
       return;
     }
 
     App.hideHint();
 
+    const playerRightEl = document.getElementById("player-right");
     if (typeof username !== "undefined") {
-      $("#player-right span").text(username);
-      $("#player-right").css({ display: "block" });
+      playerRightEl.querySelector("span").textContent = username;
+      playerRightEl.style.display = "block";
     } else {
-      $("#player-right span").text("Nobody");
-      $("#player-right").css({ display: "block" });
-      $("#answer").addClass("no-winner");
+      playerRightEl.querySelector("span").textContent = "Nobody";
+      playerRightEl.style.display = "block";
+      document.getElementById("answer").classList.add("no-winner");
     }
 
-    $("#timer").text("➜");
-    $("#answer").addClass("fadeInUp");
-    $("#answer").show();
-    $("#suggestions [data-answer=false]").addClass("wrong");
+    document.getElementById("timer").textContent = "➜";
+    const answerEl = document.getElementById("answer");
+    answerEl.classList.add("fadeInUp");
+    answerEl.style.display = "block";
+    document
+      .querySelectorAll("#suggestions [data-answer=false]")
+      .forEach(function (el) {
+        el.classList.add("wrong");
+      });
   },
+
   hideAnswer: function () {
-    $("#player-right span").text("");
-    $("#player-right").css({ display: "none", backgroundColor: "inherit" });
-    $("#answer").hide();
-    $("#answer").removeClass("fadeInUp");
-    $("#answer").removeClass("no-winner");
+    document.getElementById("player-right").querySelector("span").textContent =
+      "";
+    const playerRightEl = document.getElementById("player-right");
+    playerRightEl.style.display = "none";
+    playerRightEl.style.backgroundColor = "inherit";
+    const answerEl = document.getElementById("answer");
+    answerEl.style.display = "none";
+    answerEl.classList.remove("fadeInUp");
+    answerEl.classList.remove("no-winner");
   },
+
   initTimer: function () {
-    $("#timer").removeClass("warning");
-    $("#timer").text(App.timerPlaceholder);
+    const timerEl = document.getElementById("timer");
+    timerEl.classList.remove("warning");
+    timerEl.textContent = App.timerPlaceholder;
   },
+
   timerNearEnd: function () {
-    $("#timer").addClass("warning");
+    document.getElementById("timer").classList.add("warning");
   },
+
   playPreview: function () {
-    $(".artist").text(App.currentSong.artist.name);
-    $(".title").text(App.currentSong.title + " (" + App.currentSong.year + ")");
+    document.querySelector(".artist").textContent = App.currentSong.artist.name;
+    document.querySelector(".title").textContent =
+      App.currentSong.title + " (" + App.currentSong.year + ")";
     soundManager.destroySound("preview");
     App.audio = soundManager.createSound({
       id: "preview",
       url: App.currentSong.preview,
       onload: function () {
-        var timestamp = Math.round(App.audio.duration / 3);
+        let timestamp = Math.round(App.audio.duration / 3);
         App.audio.onPosition(timestamp, App.showHint);
 
         timestamp = Math.round((App.audio.duration * 2) / 3);
@@ -132,11 +161,11 @@ var App = {
       },
       whileloading: function () {},
       whileplaying: function () {
-        var mean = 0;
+        let mean = 0;
         App.timestamp = Math.floor(
           (App.audio.durationEstimate - App.audio.position) / 1000
         );
-        $("#timer").text(App.timestamp);
+        document.getElementById("timer").textContent = App.timestamp;
         if (soundManager.usePeakData) {
           mean = App.audio.peakData.left + App.audio.peakData.right / 2;
         }
@@ -156,16 +185,17 @@ var App = {
 
   showWinner: function (winner) {
     App.winner = winner;
-    $("#winner-name").text(winner);
-    $("#winner").show();
+    document.getElementById("winner-name").textContent = winner;
+    document.getElementById("winner").style.display = "block";
     // setTimeout(function() {
     //   socket.emit("start");
     // }, App.roundPause);
   },
+
   hideWinner: function () {
     App.winner = "";
-    $("#winner-name").text("");
-    $("#winner").hide();
+    document.getElementById("winner-name").textContent = "";
+    document.getElementById("winner").style.display = "none";
   },
 };
 
@@ -177,7 +207,7 @@ App.visualization = {
   factor: 50,
 
   init: function () {
-    var paper = $("#visualization")[0];
+    const paper = document.getElementById("visualization");
     paper.width = App.visualization.width;
     paper.height = App.visualization.height;
     App.visualization.ctx = paper.getContext("2d");
@@ -185,7 +215,7 @@ App.visualization = {
   },
 
   update: function (value) {
-    var ctx = App.visualization.ctx;
+    const ctx = App.visualization.ctx;
 
     ctx.clearRect(0, 0, 300, 300);
 
@@ -212,22 +242,21 @@ App.visualization = {
 };
 
 var socket;
-$(function () {
+document.addEventListener("DOMContentLoaded", function () {
   App.init();
 
   socket = io.connect("http://" + location.hostname + ":" + location.port);
 
   socket.emit("spectate", {});
 
-  $("#start").on("click", function () {
+  document.getElementById("start").addEventListener("click", function () {
     socket.emit("start", {});
   });
 
   socket.on("users", function (data) {
-    var users = data.users;
-    var out = "";
-    // var out = '<li>' + ((users.length == 1) ? '1 joueur' : users.length + ' joueurs') + '</li>';
-    for (var i = 0, l = users.length; i < l; i++) {
+    const users = data.users;
+    let out = "";
+    for (let i = 0, l = users.length; i < l; i++) {
       if (users[i].hasJoined) {
         out +=
           "<li>" + users[i].username + " (" + users[i].score + ")" + "</li>";
@@ -235,11 +264,11 @@ $(function () {
         out += "<li>" + users[i].username + " (ready)" + "</li>";
       }
     }
-    $("#players").html(out);
+    document.getElementById("players").innerHTML = out;
   });
   socket.on("song", function (song) {
-    //Hide intro
-    if ($("#intro").is(":visible")) {
+    const intro = document.getElementById("intro");
+    if (intro.style.display !== "none") {
       App.goToGame(song);
     } else {
       App.next(song);
