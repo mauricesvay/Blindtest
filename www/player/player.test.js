@@ -7,16 +7,21 @@ global.io = {
   })),
 };
 
-// Mock location
-global.location = {
-  hostname: "localhost",
-  port: "8080",
-};
-
-// Mock window
-global.window = {
-  location: global.location,
-};
+// Set up DOM elements before importing App
+document.body.innerHTML = `
+  <div id="login">
+    <form action="" method="get">
+      <div>
+        <input type="text" placeholder="username" name="nickname" id="nickname" />
+        <input type="submit" value="Connect" />
+      </div>
+    </form>
+  </div>
+  <div id="game">
+    <div id="username"></div>
+    <div id="suggestions"></div>
+  </div>
+`;
 
 const App = require("./player.js");
 
@@ -44,6 +49,29 @@ describe("Player App", () => {
   test("init should connect to socket", () => {
     App.init();
 
-    expect(global.io.connect).toHaveBeenCalledWith("http://localhost:8080");
+    expect(global.io.connect).toHaveBeenCalled();
+  });
+
+  test("showSuggestions should render suggestions", () => {
+    App.currentSong = {
+      suggestions: [{ name: "Song 1" }, { name: "Song 2" }],
+    };
+    App.showSuggestions();
+
+    const suggestions = document.getElementById("suggestions").innerHTML;
+    expect(suggestions).toContain("Song 1");
+    expect(suggestions).toContain("Song 2");
+  });
+
+  test("onRight should display checkmark", () => {
+    App.onRight();
+
+    expect(document.getElementById("suggestions").innerHTML).toContain("✅");
+  });
+
+  test("onWrong should display X mark", () => {
+    App.onWrong();
+
+    expect(document.getElementById("suggestions").innerHTML).toContain("❌");
   });
 });

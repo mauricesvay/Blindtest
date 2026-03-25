@@ -25,6 +25,10 @@
     "prepare": "husky install"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "jsdom",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "www/soundmanagerv2/"
+    ]
   }
 }
