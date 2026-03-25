@@ -1,35 +1,34 @@
-// Mock jQuery
-global.$ = jest.fn((selector) => {
-  if (selector === "#visualization") {
-    return [
-      {
-        width: 0,
-        height: 0,
-        getContext: jest.fn(() => ({
-          clearRect: jest.fn(),
-          fillStyle: "",
-          strokeStyle: "",
-          lineWidth: 0,
-          beginPath: jest.fn(),
-          arc: jest.fn(),
-          stroke: jest.fn(),
-          fill: jest.fn(),
-          closePath: jest.fn(),
-        })),
-      },
-    ];
-  }
-  return {
-    on: jest.fn(),
-    hide: jest.fn(),
-    html: jest.fn(),
-    text: jest.fn(),
-    val: jest.fn(),
-    attr: jest.fn(),
-    addClass: jest.fn(),
-    removeClass: jest.fn(),
-  };
-});
+// Mock document methods for testing
+const mockElement = {
+  classList: {
+    add: jest.fn(),
+    remove: jest.fn(),
+  },
+  style: {},
+  textContent: "",
+  innerHTML: "",
+  getContext: jest.fn(() => ({
+    clearRect: jest.fn(),
+    fillStyle: "",
+    strokeStyle: "",
+    lineWidth: 0,
+    beginPath: jest.fn(),
+    arc: jest.fn(),
+    stroke: jest.fn(),
+    fill: jest.fn(),
+    closePath: jest.fn(),
+  })),
+  querySelector: jest.fn(),
+  querySelectorAll: jest.fn(() => []),
+  addEventListener: jest.fn(),
+};
+
+global.document = {
+  getElementById: jest.fn(() => mockElement),
+  querySelector: jest.fn(() => mockElement),
+  querySelectorAll: jest.fn(() => []),
+  addEventListener: jest.fn(),
+};
 
 // Mock soundManager
 global.soundManager = {

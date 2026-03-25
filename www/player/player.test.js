@@ -1,15 +1,3 @@
-// Mock jQuery/Zepto
-global.$ = jest.fn((selector) => ({
-  on: jest.fn(),
-  hide: jest.fn(),
-  html: jest.fn(),
-  text: jest.fn(),
-  val: jest.fn(),
-  attr: jest.fn(),
-  addClass: jest.fn(),
-  removeClass: jest.fn(),
-}));
-
 // Mock Socket.IO
 global.io = {
   connect: jest.fn(() => ({
