@@ -1,21 +1,23 @@
 // Mock jQuery
 global.$ = jest.fn((selector) => {
-  if (selector === '#visualization') {
-    return [{
-      width: 0,
-      height: 0,
-      getContext: jest.fn(() => ({
-        clearRect: jest.fn(),
-        fillStyle: '',
-        strokeStyle: '',
-        lineWidth: 0,
-        beginPath: jest.fn(),
-        arc: jest.fn(),
-        stroke: jest.fn(),
-        fill: jest.fn(),
-        closePath: jest.fn()
-      }))
-    }];
+  if (selector === "#visualization") {
+    return [
+      {
+        width: 0,
+        height: 0,
+        getContext: jest.fn(() => ({
+          clearRect: jest.fn(),
+          fillStyle: "",
+          strokeStyle: "",
+          lineWidth: 0,
+          beginPath: jest.fn(),
+          arc: jest.fn(),
+          stroke: jest.fn(),
+          fill: jest.fn(),
+          closePath: jest.fn(),
+        })),
+      },
+    ];
   }
   return {
     on: jest.fn(),
@@ -25,23 +27,23 @@ global.$ = jest.fn((selector) => {
     val: jest.fn(),
     attr: jest.fn(),
     addClass: jest.fn(),
-    removeClass: jest.fn()
+    removeClass: jest.fn(),
   };
 });
 
 // Mock soundManager
 global.soundManager = {
-  usePeakData: true
+  usePeakData: true,
 };
 
 // Mock window
 global.window = {
-  location: 'http://localhost:8080/spectate'
+  location: "http://localhost:8080/spectate",
 };
 
-const App = require('./monitor.js');
+const App = require("./monitor.js");
 
-describe('Monitor App', () => {
+describe("Monitor App", () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
@@ -50,13 +52,13 @@ describe('Monitor App', () => {
     App.timestamp = 0;
   });
 
-  test('App should have init method', () => {
-    expect(typeof App.init).toBe('function');
+  test("App should have init method", () => {
+    expect(typeof App.init).toBe("function");
   });
 
-  test('init should set join url', () => {
+  test("init should set join url", () => {
     App.init();
 
-    expect(global.$).toHaveBeenCalledWith('#join-url');
+    expect(global.$).toHaveBeenCalledWith("#join-url");
   });
 });

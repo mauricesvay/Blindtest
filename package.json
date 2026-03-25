@@ -1,25 +1,30 @@
 {
-    "name": "blindtest",
-    "version": "0.0.4",
-    "private": true,
-    "engines": {
-        "node": ">=18.0.0"
-    },
-    "dependencies": {
-        "express": "^4.19.2",
-        "he": "^1.2.0",
-        "socket.io": "^4.7.5"
-    },
-    "devDependencies": {
-        "jest": "^29.7.0",
-        "jest-environment-jsdom": "^30.3.0",
-        "jsdom": "^29.0.1"
-    },
-    "scripts": {
-        "start": "node app",
-        "test": "jest"
-    },
-    "jest": {
-        "testEnvironment": "node"
-    }
+  "name": "blindtest",
+  "version": "0.0.4",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "he": "^1.2.0",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.3.0",
+    "jsdom": "^29.0.1",
+    "prettier": "^3.8.1"
+  },
+  "scripts": {
+    "start": "node app",
+    "test": "jest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky install"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
 }

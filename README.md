@@ -1,61 +1,59 @@
-Blindtest
-=========
+# Blindtest
 
 Blindtest is a multiplayer musical game (up to 16 simultaneous players). This is a very early version and surely contains bugs.
 
 This project was initially made for the BeMyApp Deezer contest (48h hackathon).
 
-Gameplay
---------
-* The main screen plays a 30sec audio sample of a random song
-* 4 possible answers are displayed
-* with their mobile phone, players have to guess who is the singer of the song
+## Gameplay
 
-Installing
-----------
-* Get the source `git clone git://github.com/mauricesvay/Blindtest.git`
-* `cd Blindtest`
-* Install dependencies (socket.io, express, sqlite3) with `npm install .`
+- The main screen plays a 30sec audio sample of a random song
+- 4 possible answers are displayed
+- with their mobile phone, players have to guess who is the singer of the song
 
-Testing
--------
-* Run unit tests with `npm test`
-* Tests are colocated with their source files (e.g., `lib/Game.test.js` tests `lib/Game.js`)
+## Installing
 
-Starting the game
------------------
-* `node app.js`
-* open `http://localhost:8080/spectate` in your browser. It is now the main screen.
-* each player can now join the game at `http://MAIN_SCREEN_IP_ADDRESS:8080/`
-* when all players are ready, you can start the game on the main screen. 
+- Get the source `git clone git://github.com/mauricesvay/Blindtest.git`
+- `cd Blindtest`
+- Install dependencies (socket.io, express, sqlite3) with `npm install .`
 
-TODO
-----
-* ~~Start a new round when a round is finished (so you don't have to restart the app)~~
-* ~~Let users join anytime~~
-* Let users create "rooms"
-* Let users login with a FB or Twitter account
-* Let users select a playlist to choose songs from
-* Implement lag compensation
-* Play audio on clients
-* Make it easier to change options
+## Testing
 
+- Run unit tests with `npm test`
+- Tests are colocated with their source files (e.g., `lib/Game.test.js` tests `lib/Game.js`)
 
-Technical details
------------------
-* Audio samples and tracks info come from Deezer API
-* Songs are picked randomly among french charts (1956-2012)
-* Real time connection is made with socket.io
-* The app has been tested on a Mac (server), iPhone (client), iPad (client) and is known for working on some Android devices (client).
+## Starting the game
 
-License
--------
-* The app includes:
-  * Soundmanager2 which is under BSD license
-  * Zepto.js: [http://zeptojs.com/license](http://zeptojs.com/license)
-  * jQuery: [http://jquery.org/license](http://jquery.org/license)
-  * animate.css: [http://daneden.me/animate/](http://daneden.me/animate/)
-  * Montserrat font: [http://www.google.com/webfonts/specimen/Montserrat](http://www.google.com/webfonts/specimen/Montserrat)
+- `node app.js`
+- open `http://localhost:8080/spectate` in your browser. It is now the main screen.
+- each player can now join the game at `http://MAIN_SCREEN_IP_ADDRESS:8080/`
+- when all players are ready, you can start the game on the main screen.
+
+## TODO
+
+- ~~Start a new round when a round is finished (so you don't have to restart the app)~~
+- ~~Let users join anytime~~
+- Let users create "rooms"
+- Let users login with a FB or Twitter account
+- Let users select a playlist to choose songs from
+- Implement lag compensation
+- Play audio on clients
+- Make it easier to change options
+
+## Technical details
+
+- Audio samples and tracks info come from Deezer API
+- Songs are picked randomly among french charts (1956-2012)
+- Real time connection is made with socket.io
+- The app has been tested on a Mac (server), iPhone (client), iPad (client) and is known for working on some Android devices (client).
+
+## License
+
+- The app includes:
+  - Soundmanager2 which is under BSD license
+  - Zepto.js: [http://zeptojs.com/license](http://zeptojs.com/license)
+  - jQuery: [http://jquery.org/license](http://jquery.org/license)
+  - animate.css: [http://daneden.me/animate/](http://daneden.me/animate/)
+  - Montserrat font: [http://www.google.com/webfonts/specimen/Montserrat](http://www.google.com/webfonts/specimen/Montserrat)
 
 This app is under the BSD license:
 

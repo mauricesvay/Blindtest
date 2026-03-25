@@ -1,8 +1,8 @@
 soundManager.preferFlash = true;
 soundManager.flashVersion = 9;
-soundManager.url = '../../swf/';
+soundManager.url = "../../swf/";
 soundManager.useHighPerformance = true;
-soundManager.wmode = 'transparent';
+soundManager.wmode = "transparent";
 soundManager.debugMode = false;
 
 var points = [];
@@ -15,13 +15,13 @@ var noise = null;
 var screenX = 0;
 
 function doPaint(e) {
-  var x = (e||event).clientX;
-  var y = (e||event).clientY;
-  var diff = Math.max(Math.abs(x-lastX),Math.abs(y-lastY));
-  if (diff>threshhold) {
+  var x = (e || event).clientX;
+  var y = (e || event).clientY;
+  var diff = Math.max(Math.abs(x - lastX), Math.abs(y - lastY));
+  if (diff > threshhold) {
     lastX = x;
     lastY = y;
-    points.push(new Point(x,y,Math.min(diff/(32),3)));
+    points.push(new Point(x, y, Math.min(diff / 32, 3)));
   }
   return false;
 }
@@ -36,60 +36,68 @@ function startPaint(e) {
   // soundManager.play('down');
   document.onmousemove = doPaint;
   document.onmouseup = stopPaint;
-  lastX = (e||event).clientX;
-  lastY = (e||event).clientY;
-  screenX = (window.innerWidth?window.innerWidth:document.documentElement.clientWidth||document.body.clientWidth);
-  e?e.stopPropagation():event.returnValue = false;
+  lastX = (e || event).clientX;
+  lastY = (e || event).clientY;
+  screenX = window.innerWidth
+    ? window.innerWidth
+    : document.documentElement.clientWidth || document.body.clientWidth;
+  e ? e.stopPropagation() : (event.returnValue = false);
   return false;
 }
 
 function initPoints() {
-  o = document.createElement('img');
-  o.src = 'image/point.png';
-  o.className = 'point';
+  o = document.createElement("img");
+  o.src = "image/point.png";
+  o.className = "point";
   document.onmousedown = startPaint;
   document.onmouseup = stopPaint;
 }
 
-function Point(x,y,scale) {
+function Point(x, y, scale) {
   var self = this;
   this.data = {
     x: x,
     y: y,
     scale: scale,
-    scalePX: parseInt(32*scale)
-  }
+    scalePX: parseInt(32 * scale),
+  };
   this.o = o.cloneNode(false);
-  this.o.style.left = (x-(this.data.scalePX/2))+'px';
-  this.o.style.top = (y-(this.data.scalePX/2))+'px';
-  this.o.style.width = this.o.style.height = this.data.scalePX+'px';
-  var screenX2 = parseInt(screenX/2);
-  noise.play({volume:parseInt(Math.min(1,scale/3)*100),pan:(x<screenX2?(screenX2-x)/screenX2*-100:(x-screenX2)/screenX2*100)});
+  this.o.style.left = x - this.data.scalePX / 2 + "px";
+  this.o.style.top = y - this.data.scalePX / 2 + "px";
+  this.o.style.width = this.o.style.height = this.data.scalePX + "px";
+  var screenX2 = parseInt(screenX / 2);
+  noise.play({
+    volume: parseInt(Math.min(1, scale / 3) * 100),
+    pan:
+      x < screenX2
+        ? ((screenX2 - x) / screenX2) * -100
+        : ((x - screenX2) / screenX2) * 100,
+  });
   document.body.appendChild(this.o);
 }
 
-soundManager.onload = function() {
+soundManager.onload = function () {
   noise = soundManager.createSound({
-    id:'noise',
-    url:'../animation/audio/fingerplop.mp3',
+    id: "noise",
+    url: "../animation/audio/fingerplop.mp3",
     multiShot: true,
-    autoLoad: true
+    autoLoad: true,
   });
   soundManager.createSound({
-    id:'down',
-    url:'../_mp3/click-low.mp3',
+    id: "down",
+    url: "../_mp3/click-low.mp3",
     multiShot: true,
-    autoLoad: true
+    autoLoad: true,
   });
   soundManager.createSound({
-    id:'up',
-    url:'../_mp3/click-high.mp3',
+    id: "up",
+    url: "../_mp3/click-high.mp3",
     multiShot: true,
-    autoLoad: true
+    autoLoad: true,
   });
   initPoints();
-}
+};
 
-soundManager.onerror = function() {
-  alert('d\'oh, something didn\'t work - SM2 failed to start.');
-}
+soundManager.onerror = function () {
+  alert("d'oh, something didn't work - SM2 failed to start.");
+};

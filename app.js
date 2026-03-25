@@ -7,10 +7,10 @@ const io = require("socket.io")(server);
 const PORT = process.env.PORT || 8080;
 
 app.use(express.static("www"));
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.redirect("/player/index.html");
 });
-app.get("/spectate", function(req, res) {
+app.get("/spectate", function (req, res) {
   res.redirect("/monitor/index.html");
 });
 

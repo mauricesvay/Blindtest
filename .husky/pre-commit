@@ -1,0 +1,7 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Only format files that prettier can handle
+npx prettier --write $(git diff --cached --name-only --diff-filter=d | grep -E '\.(js|json|html|css|md|ts|tsx|jsx)$')
+git add -A
+

@@ -6,7 +6,7 @@ var App = {
   roundPause: 10 * 1000,
   timerPlaceholder: "♫",
 
-  init: function() {
+  init: function () {
     var url = window.location + "";
     $("#join-url").html(url.replace("/spectate", ""));
 
@@ -17,21 +17,21 @@ var App = {
     // });
     if (!soundManager.usePeakData) {
       App.timerPlaceholder = "▶";
-      $("#timer").on("click", function() {
+      $("#timer").on("click", function () {
         App.audio.play("preview");
       });
     }
   },
 
-  goToGame: function(song) {
+  goToGame: function (song) {
     $("#intro").addClass("animated bounceOutUp");
-    setTimeout(function() {
+    setTimeout(function () {
       $("#intro").hide();
     }, 1000);
     App.next(song);
   },
 
-  next: function(song) {
+  next: function (song) {
     App.currentSong = song.song;
     if (App.audio && typeof App.audio.stop == "function") {
       App.audio.stop();
@@ -44,20 +44,20 @@ var App = {
     App.play();
   },
 
-  play: function() {
+  play: function () {
     App.showSuggestions();
     App.playPreview();
   },
 
-  showSuggestions: function() {
+  showSuggestions: function () {
     var out = "";
-    $.each(App.currentSong.suggestions, function(index, value) {
+    $.each(App.currentSong.suggestions, function (index, value) {
       out += '<li data-answer="' + value.answer + '">' + value.name + "</li>";
     });
     $("#suggestions").html(out);
     $("#suggestions li").addClass("flipInX");
   },
-  showHint: function() {
+  showHint: function () {
     if ($("#answer").is(":visible")) {
       return;
     }
@@ -71,14 +71,14 @@ var App = {
     $("#hint").addClass("fadeInUp");
     $("#hint").show();
   },
-  hideHint: function() {
+  hideHint: function () {
     $("#hint").removeClass("fadeInUp");
     $("#hint").addClass("fadeOutDown");
-    setTimeout(function() {
+    setTimeout(function () {
       $("#hint").hide();
     }, 450);
   },
-  showAnswer: function(username) {
+  showAnswer: function (username) {
     if ($("#winner").is(":visible")) {
       return;
     }
@@ -99,28 +99,28 @@ var App = {
     $("#answer").show();
     $("#suggestions [data-answer=false]").addClass("wrong");
   },
-  hideAnswer: function() {
+  hideAnswer: function () {
     $("#player-right span").text("");
     $("#player-right").css({ display: "none", backgroundColor: "inherit" });
     $("#answer").hide();
     $("#answer").removeClass("fadeInUp");
     $("#answer").removeClass("no-winner");
   },
-  initTimer: function() {
+  initTimer: function () {
     $("#timer").removeClass("warning");
     $("#timer").text(App.timerPlaceholder);
   },
-  timerNearEnd: function() {
+  timerNearEnd: function () {
     $("#timer").addClass("warning");
   },
-  playPreview: function() {
+  playPreview: function () {
     $(".artist").text(App.currentSong.artist.name);
     $(".title").text(App.currentSong.title + " (" + App.currentSong.year + ")");
     soundManager.destroySound("preview");
     App.audio = soundManager.createSound({
       id: "preview",
       url: App.currentSong.preview,
-      onload: function() {
+      onload: function () {
         var timestamp = Math.round(App.audio.duration / 3);
         App.audio.onPosition(timestamp, App.showHint);
 
@@ -130,8 +130,8 @@ var App = {
         timestamp = Math.floor(App.audio.duration - 5000);
         App.audio.onPosition(timestamp, App.timerNearEnd);
       },
-      whileloading: function() {},
-      whileplaying: function() {
+      whileloading: function () {},
+      whileplaying: function () {
         var mean = 0;
         App.timestamp = Math.floor(
           (App.audio.durationEstimate - App.audio.position) / 1000
@@ -142,19 +142,19 @@ var App = {
         }
         App.visualization.update(mean);
       },
-      onfinish: function() {
+      onfinish: function () {
         App.showAnswer();
 
         // Time is up, next
-        setTimeout(function() {
+        setTimeout(function () {
           socket.emit("next");
         }, App.pause);
-      }
+      },
     });
     App.audio.play();
   },
 
-  showWinner: function(winner) {
+  showWinner: function (winner) {
     App.winner = winner;
     $("#winner-name").text(winner);
     $("#winner").show();
@@ -162,11 +162,11 @@ var App = {
     //   socket.emit("start");
     // }, App.roundPause);
   },
-  hideWinner: function() {
+  hideWinner: function () {
     App.winner = "";
     $("#winner-name").text("");
     $("#winner").hide();
-  }
+  },
 };
 
 App.visualization = {
@@ -176,7 +176,7 @@ App.visualization = {
   minRadius: 50,
   factor: 50,
 
-  init: function() {
+  init: function () {
     var paper = $("#visualization")[0];
     paper.width = App.visualization.width;
     paper.height = App.visualization.height;
@@ -184,7 +184,7 @@ App.visualization = {
     App.visualization.update(0);
   },
 
-  update: function(value) {
+  update: function (value) {
     var ctx = App.visualization.ctx;
 
     ctx.clearRect(0, 0, 300, 300);
@@ -208,22 +208,22 @@ App.visualization = {
     );
     ctx.closePath();
     ctx.fill();
-  }
+  },
 };
 
 var socket;
-$(function() {
+$(function () {
   App.init();
 
   socket = io.connect("http://" + location.hostname + ":" + location.port);
 
   socket.emit("spectate", {});
 
-  $("#start").on("click", function() {
+  $("#start").on("click", function () {
     socket.emit("start", {});
   });
 
-  socket.on("users", function(data) {
+  socket.on("users", function (data) {
     var users = data.users;
     var out = "";
     // var out = '<li>' + ((users.length == 1) ? '1 joueur' : users.length + ' joueurs') + '</li>';
@@ -237,7 +237,7 @@ $(function() {
     }
     $("#players").html(out);
   });
-  socket.on("song", function(song) {
+  socket.on("song", function (song) {
     //Hide intro
     if ($("#intro").is(":visible")) {
       App.goToGame(song);
@@ -245,14 +245,14 @@ $(function() {
       App.next(song);
     }
   });
-  socket.on("answer", function(username) {
+  socket.on("answer", function (username) {
     if (username && username.username) {
       App.showAnswer(username.username);
     } else {
       App.showAnswer();
     }
   });
-  socket.on("winner", function(winner) {
+  socket.on("winner", function (winner) {
     App.showWinner(winner);
   });
 });

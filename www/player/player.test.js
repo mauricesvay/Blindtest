@@ -7,7 +7,7 @@ global.$ = jest.fn((selector) => ({
   val: jest.fn(),
   attr: jest.fn(),
   addClass: jest.fn(),
-  removeClass: jest.fn()
+  removeClass: jest.fn(),
 }));
 
 // Mock Socket.IO
@@ -15,24 +15,24 @@ global.io = {
   connect: jest.fn(() => ({
     on: jest.fn(),
     emit: jest.fn(),
-    disconnect: jest.fn()
-  }))
+    disconnect: jest.fn(),
+  })),
 };
 
 // Mock location
 global.location = {
-  hostname: 'localhost',
-  port: '8080'
+  hostname: "localhost",
+  port: "8080",
 };
 
 // Mock window
 global.window = {
-  location: global.location
+  location: global.location,
 };
 
-const App = require('./player.js');
+const App = require("./player.js");
 
-describe('Player App', () => {
+describe("Player App", () => {
   let mockSocket;
 
   beforeEach(() => {
@@ -41,7 +41,7 @@ describe('Player App', () => {
     mockSocket = {
       on: jest.fn(),
       emit: jest.fn(),
-      disconnect: jest.fn()
+      disconnect: jest.fn(),
     };
     global.io.connect.mockReturnValue(mockSocket);
 
@@ -49,13 +49,13 @@ describe('Player App', () => {
     App.username = null;
   });
 
-  test('App should have init method', () => {
-    expect(typeof App.init).toBe('function');
+  test("App should have init method", () => {
+    expect(typeof App.init).toBe("function");
   });
 
-  test('init should connect to socket', () => {
+  test("init should connect to socket", () => {
     App.init();
 
-    expect(global.io.connect).toHaveBeenCalledWith('http://localhost:8080');
+    expect(global.io.connect).toHaveBeenCalledWith("http://localhost:8080");
   });
 });
