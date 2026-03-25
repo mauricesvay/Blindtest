@@ -256,3 +256,5 @@ $(function() {
     App.showWinner(winner);
   });
 });
+
+module.exports = App;

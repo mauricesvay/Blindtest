@@ -85,3 +85,5 @@ var App = {
 $(function() {
   App.init();
 });
+
+module.exports = App;

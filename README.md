@@ -17,6 +17,11 @@ Installing
 * `cd Blindtest`
 * Install dependencies (socket.io, express, sqlite3) with `npm install .`
 
+Testing
+-------
+* Run unit tests with `npm test`
+* Tests are colocated with their source files (e.g., `lib/Game.test.js` tests `lib/Game.js`)
+
 Starting the game
 -----------------
 * `node app.js`

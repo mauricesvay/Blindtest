@@ -10,7 +10,16 @@
         "he": "^1.2.0",
         "socket.io": "^4.7.5"
     },
+    "devDependencies": {
+        "jest": "^29.7.0",
+        "jest-environment-jsdom": "^30.3.0",
+        "jsdom": "^29.0.1"
+    },
     "scripts": {
-        "start": "node app"
+        "start": "node app",
+        "test": "jest"
+    },
+    "jest": {
+        "testEnvironment": "node"
     }
 }
