@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -14,7 +14,26 @@
   <body>
     <div id="players">&nbsp;</div>
 
+    <div id="room-setup">
+      <div class="room-section">
+        <h2>Room Setup</h2>
+        <div class="room-input-group">
+          <label>Join an existing room:</label>
+          <input
+            type="text"
+            id="room-code-input"
+            placeholder="Enter 4-letter code"
+            maxlength="4"
+          />
+          <button id="join-room-btn">Join Room</button>
+        </div>
+        <div class="divider">OR</div>
+        <button id="create-room-btn">Create New Room</button>
+      </div>
+    </div>
+
     <div id="intro">
+      <h2>Room: <span id="room-code-display"></span></h2>
       <h2>Join the game</h2>
       <h1><span id="join-url"></span></h1>
       <span id="start">START</span>
@@ -46,7 +65,6 @@
     </div>
     <pre id="console"></pre>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="/monitor/soundmanagerv2/script/soundmanager2-nodebug.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript">

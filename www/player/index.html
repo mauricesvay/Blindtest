@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -63,6 +63,14 @@
           <input
             type="text"
             value=""
+            placeholder="4-letter room code"
+            name="roomCode"
+            id="room-code"
+            maxlength="4"
+          />
+          <input
+            type="text"
+            value=""
             placeholder="username"
             name="nickname"
             id="nickname"
@@ -78,7 +86,6 @@
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/player/zepto.min.js"></script>
     <script src="/player/player.js?v=3"></script>
   </body>
 </html>

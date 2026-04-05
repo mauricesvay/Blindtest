@@ -2,38 +2,75 @@ var socket;
 var App = {
   currentSong: null,
   username: null,
+  currentRoom: null,
 
-  init: function() {
+  init: function () {
     socket = io.connect("http://" + location.hostname + ":" + location.port);
 
-    //Login
-    $("form").on("submit", function(e) {
+    // Login
+    const form = document.querySelector("form");
+    const roomCodeInput = document.getElementById("room-code");
+    const nicknameInput = document.getElementById("nickname");
+    const usernameDisplay = document.getElementById("username");
+    const suggestionsContainer = document.getElementById("suggestions");
+
+    // Convert room code to uppercase as user types
+    roomCodeInput.addEventListener("input", function (e) {
+      e.target.value = e.target.value.toUpperCase();
+    });
+
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var username = $("#nickname").val();
+      const roomCode = roomCodeInput.value.toUpperCase();
+      const username = nicknameInput.value;
+
+      if (!roomCode) {
+        alert("Please enter a room code");
+        return;
+      }
+
+      if (!username) {
+        alert("Please enter a username");
+        return;
+      }
+
+      // First join the room
+      App.currentRoom = roomCode;
+      socket.emit("joinRoom", { roomCode: roomCode });
+    });
+
+    // Handle room join response
+    socket.on("joinedRoom", function (data) {
+      const username = nicknameInput.value;
       App.username = username;
-      $("#username").text(username);
+      usernameDisplay.textContent = username;
       socket.emit("login", {
-        username: username
+        username: username,
       });
     });
 
-    socket.on("login", function() {
-      $("form").hide();
-      $("#suggestions").html('<span class="wait">Ready for next round</span>');
+    socket.on("joinRoomFailed", function (data) {
+      alert("Failed to join room: " + data.reason);
     });
 
-    socket.on("refused", function() {
+    socket.on("login", function () {
+      form.style.display = "none";
+      suggestionsContainer.innerHTML =
+        '<span class="wait">Ready for next round</span>';
+    });
+
+    socket.on("refused", function () {
       alert("Server is full");
       socket.disconnect();
     });
 
-    socket.on("song", function(song) {
+    socket.on("song", function (song) {
       // if (App.userName) {
       App.onSong(song);
       // }
     });
 
-    socket.on("answer", function(data) {
+    socket.on("answer", function (data) {
       if (data && data.username === App.username) {
         App.onRight();
       } else {
@@ -41,37 +78,39 @@ var App = {
       }
     });
 
-    //Suggestions
-    var eventType =
-      typeof window.ontouchstart === "undefined" ? "click" : "tap";
-    $("#suggestions").on(eventType, function(e) {
-      if ($(e.target).attr("data-value")) {
-        var value = $(e.target).attr("data-value");
+    // Suggestions
+    const eventType =
+      typeof window.ontouchstart === "undefined" ? "click" : "touchend";
+    suggestionsContainer.addEventListener(eventType, function (e) {
+      const dataValue = e.target.dataset.value;
+      if (dataValue !== undefined) {
         socket.emit("button", {
-          button: value
+          button: dataValue,
         });
       }
     });
   },
 
-  onSong: function(song) {
+  onSong: function (song) {
     App.currentSong = song.song;
     App.showSuggestions();
   },
 
-  onRight: function() {
-    $("#suggestions").html("<span class='right'>✅</span>");
+  onRight: function () {
+    document.getElementById("suggestions").innerHTML =
+      "<span class='right'>✅</span>";
   },
 
-  //@TODO : add case when other user is right onOtherRight
+  // @TODO : add case when other user is right onOtherRight
 
-  onWrong: function() {
-    $("#suggestions").html("<span class='wrong'>❌</span>");
+  onWrong: function () {
+    document.getElementById("suggestions").innerHTML =
+      "<span class='wrong'>❌</span>";
   },
 
-  showSuggestions: function() {
-    var out = "";
-    for (var i = 0, l = App.currentSong.suggestions.length; i < l; i++) {
+  showSuggestions: function () {
+    let out = "";
+    for (let i = 0, l = App.currentSong.suggestions.length; i < l; i++) {
       out +=
         '<li data-value="' +
         i +
@@ -79,9 +118,12 @@ var App = {
         App.currentSong.suggestions[i].name +
         "</li>";
     }
-    $("#suggestions").html("<ul>" + out + "</ul>");
-  }
+    document.getElementById("suggestions").innerHTML = "<ul>" + out + "</ul>";
+  },
 };
-$(function() {
+
+document.addEventListener("DOMContentLoaded", function () {
   App.init();
 });
+
+module.exports = App;

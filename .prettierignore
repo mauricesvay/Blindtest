@@ -1,0 +1,7 @@
+node_modules/
+www/soundmanagerv2/
+dist/
+build/
+.git/
+data/
+.husky/
