@@ -34,6 +34,19 @@ body {
   left: 0;
   right: 0;
 }
+#qr-code-container {
+  margin: 20px 0;
+}
+
+#qr-code {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border: 8px solid #fff;
+  background: #fff;
+  padding: 10px;
+}
+
 #start {
   display: inline-block;
   padding: 6px;

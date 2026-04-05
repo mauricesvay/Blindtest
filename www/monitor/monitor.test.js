@@ -9,6 +9,13 @@ global.soundManager = {
   })),
 };
 
+// Mock fetch
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve({ url: "http://localhost:8080" }),
+  })
+);
+
 // Mock HTMLCanvasElement.getContext
 HTMLCanvasElement.prototype.getContext = jest.fn(() => ({
   clearRect: jest.fn(),

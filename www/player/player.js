@@ -7,6 +7,13 @@ var App = {
   init: function () {
     socket = io.connect("http://" + location.hostname + ":" + location.port);
 
+    // Check for room code in URL parameters and prefill
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomParam = urlParams.get("room");
+    if (roomParam && /^[A-Z]{4}$/.test(roomParam)) {
+      document.getElementById("room-code").value = roomParam;
+    }
+
     // Login
     const form = document.querySelector("form");
     const roomCodeInput = document.getElementById("room-code");

@@ -8,11 +8,42 @@ var App = {
   currentRoom: null,
 
   init: function () {
-    const url = window.location + "";
-    document.getElementById("join-url").innerHTML = url.replace(
-      "/spectate",
-      ""
-    );
+    // Fetch the correct join URL from the server
+    fetch("/api/join-url")
+      .then((response) => response.json())
+      .then((data) => {
+        const joinUrlEl = document.getElementById("join-url");
+        if (joinUrlEl) {
+          joinUrlEl.innerHTML = data.url;
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching join URL:", error);
+        // Fallback to window.location if API fails
+        const url = window.location + "";
+        const joinUrlEl = document.getElementById("join-url");
+        if (joinUrlEl) {
+          joinUrlEl.innerHTML = url.replace("/spectate", "");
+        }
+      });
+
+    // Fetch and display the QR code
+    fetch("/api/join-qr")
+      .then((response) => response.json())
+      .then((data) => {
+        const qrCodeEl = document.getElementById("qr-code");
+        if (qrCodeEl) {
+          qrCodeEl.src = data.qrCode;
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching QR code:", error);
+        // Hide QR code container if it fails to load
+        const qrContainer = document.getElementById("qr-code-container");
+        if (qrContainer) {
+          qrContainer.style.display = "none";
+        }
+      });
 
     App.visualization.init();
 
@@ -23,6 +54,45 @@ var App = {
         App.audio.play("preview");
       });
     }
+  },
+
+  updateJoinInfo: function () {
+    if (!App.currentRoom) return;
+
+    // Fetch the correct join URL from the server with room code
+    fetch(`/api/join-url?room=${encodeURIComponent(App.currentRoom)}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const joinUrlEl = document.getElementById("join-url");
+        if (joinUrlEl) {
+          joinUrlEl.innerHTML = data.url;
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching join URL:", error);
+      });
+
+    // Fetch and display the QR code with room code
+    fetch(`/api/join-qr?room=${encodeURIComponent(App.currentRoom)}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const qrCodeEl = document.getElementById("qr-code");
+        if (qrCodeEl) {
+          qrCodeEl.src = data.qrCode;
+        }
+        const qrContainer = document.getElementById("qr-code-container");
+        if (qrContainer) {
+          qrContainer.style.display = "block";
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching QR code:", error);
+        // Hide QR code container if it fails to load
+        const qrContainer = document.getElementById("qr-code-container");
+        if (qrContainer) {
+          qrContainer.style.display = "none";
+        }
+      });
   },
 
   showRoomSetup: function () {
@@ -38,6 +108,7 @@ var App = {
   setRoomCode: function (roomCode) {
     App.currentRoom = roomCode;
     document.getElementById("room-code-display").textContent = roomCode;
+    App.updateJoinInfo();
   },
 
   goToGame: function (song) {
