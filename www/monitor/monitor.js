@@ -293,6 +293,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+  // Convert room code to uppercase as user types
+  document
+    .getElementById("room-code-input")
+    .addEventListener("input", function (e) {
+      e.target.value = e.target.value.toUpperCase();
+    });
+
   // Room events
   socket.on("roomCreated", function (data) {
     console.log("Room created: " + data.roomCode);

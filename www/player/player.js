@@ -14,6 +14,11 @@ var App = {
     const usernameDisplay = document.getElementById("username");
     const suggestionsContainer = document.getElementById("suggestions");
 
+    // Convert room code to uppercase as user types
+    roomCodeInput.addEventListener("input", function (e) {
+      e.target.value = e.target.value.toUpperCase();
+    });
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       const roomCode = roomCodeInput.value.toUpperCase();
