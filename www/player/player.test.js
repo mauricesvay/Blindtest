@@ -12,6 +12,7 @@ document.body.innerHTML = `
   <div id="login">
     <form action="" method="get">
       <div>
+        <input type="text" placeholder="room code" name="room-code" id="room-code" />
         <input type="text" placeholder="username" name="nickname" id="nickname" />
         <input type="submit" value="Connect" />
       </div>
