@@ -2,24 +2,50 @@ var socket;
 var App = {
   currentSong: null,
   username: null,
+  currentRoom: null,
 
   init: function () {
     socket = io.connect("http://" + location.hostname + ":" + location.port);
 
     // Login
     const form = document.querySelector("form");
+    const roomCodeInput = document.getElementById("room-code");
     const nicknameInput = document.getElementById("nickname");
     const usernameDisplay = document.getElementById("username");
     const suggestionsContainer = document.getElementById("suggestions");
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      const roomCode = roomCodeInput.value.toUpperCase();
+      const username = nicknameInput.value;
+
+      if (!roomCode) {
+        alert("Please enter a room code");
+        return;
+      }
+
+      if (!username) {
+        alert("Please enter a username");
+        return;
+      }
+
+      // First join the room
+      App.currentRoom = roomCode;
+      socket.emit("joinRoom", { roomCode: roomCode });
+    });
+
+    // Handle room join response
+    socket.on("joinedRoom", function (data) {
       const username = nicknameInput.value;
       App.username = username;
       usernameDisplay.textContent = username;
       socket.emit("login", {
         username: username,
       });
+    });
+
+    socket.on("joinRoomFailed", function (data) {
+      alert("Failed to join room: " + data.reason);
     });
 
     socket.on("login", function () {

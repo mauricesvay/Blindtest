@@ -1,4 +1,4 @@
-const Game = require("./lib/Game");
+const RoomManager = require("./lib/RoomManager");
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
@@ -14,6 +14,6 @@ app.get("/spectate", function (req, res) {
   res.redirect("/monitor/index.html");
 });
 
-Game.init(io);
+RoomManager.init(io);
 server.listen(PORT);
 console.log(`Monitor: http://localhost:${PORT}/monitor`);

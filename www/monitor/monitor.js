@@ -5,6 +5,7 @@ var App = {
   pause: 5 * 1000,
   roundPause: 10 * 1000,
   timerPlaceholder: "♫",
+  currentRoom: null,
 
   init: function () {
     const url = window.location + "";
@@ -22,6 +23,21 @@ var App = {
         App.audio.play("preview");
       });
     }
+  },
+
+  showRoomSetup: function () {
+    document.getElementById("room-setup").style.display = "block";
+    document.getElementById("intro").style.display = "none";
+  },
+
+  hideRoomSetup: function () {
+    document.getElementById("room-setup").style.display = "none";
+    document.getElementById("intro").style.display = "block";
+  },
+
+  setRoomCode: function (roomCode) {
+    App.currentRoom = roomCode;
+    document.getElementById("room-code-display").textContent = roomCode;
   },
 
   goToGame: function (song) {
@@ -244,10 +260,61 @@ App.visualization = {
 var socket;
 document.addEventListener("DOMContentLoaded", function () {
   App.init();
+  App.showRoomSetup();
 
   socket = io.connect("http://" + location.hostname + ":" + location.port);
 
-  socket.emit("spectate", {});
+  // Room setup buttons
+  document
+    .getElementById("create-room-btn")
+    .addEventListener("click", function () {
+      socket.emit("createRoom", {});
+    });
+
+  document
+    .getElementById("join-room-btn")
+    .addEventListener("click", function () {
+      var roomCode = document
+        .getElementById("room-code-input")
+        .value.toUpperCase();
+      if (roomCode.length !== 4) {
+        alert("Room code must be 4 letters");
+        return;
+      }
+      socket.emit("joinRoom", { roomCode: roomCode });
+    });
+
+  // Allow pressing Enter in the room code input
+  document
+    .getElementById("room-code-input")
+    .addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        document.getElementById("join-room-btn").click();
+      }
+    });
+
+  // Room events
+  socket.on("roomCreated", function (data) {
+    console.log("Room created: " + data.roomCode);
+    App.setRoomCode(data.roomCode);
+    App.hideRoomSetup();
+    socket.emit("spectate", {});
+  });
+
+  socket.on("joinedRoom", function (data) {
+    console.log("Joined room: " + data.roomCode);
+    App.setRoomCode(data.roomCode);
+    App.hideRoomSetup();
+    socket.emit("spectate", {});
+  });
+
+  socket.on("joinRoomFailed", function (data) {
+    alert("Failed to join room: " + data.reason);
+  });
+
+  socket.on("roomStatus", function (data) {
+    console.log("Room status updated:", data);
+  });
 
   document.getElementById("start").addEventListener("click", function () {
     socket.emit("start", {});
