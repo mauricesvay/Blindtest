@@ -23,7 +23,7 @@
     "test": "jest",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "jest": {
     "testEnvironment": "jsdom",
